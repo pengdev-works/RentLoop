@@ -1,0 +1,25 @@
+{
+  "name": "rentloop",
+  "version": "1.0.0",
+  "description": "RentLoop - A Secure Peer-to-Peer Item Rental and Trust Management Platform",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server/src/index.js",
+    "server": "node server/src/index.js",
+    "client": "cd client && npm run dev",
+    "build": "cd client && npm run build",
+    "seed": "node server/src/database/seed.js",
+    "test": "node test-suite.js"
+  },
+  "keywords": [
+    "p2p-rental",
+    "trust-management",
+    "item-sharing",
+    "condition-documentation",
+    "rbac",
+    "capstone"
+  ],
+  "author": "RentLoop Engineering Team",
+  "license": "ISC"
+}
