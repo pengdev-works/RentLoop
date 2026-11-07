@@ -274,7 +274,7 @@ export function OwnerDashboard() {
                       {r.start_date} to {r.end_date}
                     </span>
                     <span>•</span>
-                    <span className="font-bold text-slate-900">Payout: ${r.calculated_price}</span>
+                    <span className="font-bold text-slate-900">Payout: ₱{r.calculated_price}</span>
                   </div>
 
                   <p className="text-xs text-slate-600 italic bg-slate-50 p-2.5 rounded-xl border border-slate-100 max-w-xl">
@@ -344,7 +344,7 @@ export function OwnerDashboard() {
                   <h3 className="font-bold text-sm text-slate-900 line-clamp-1">{item.title}</h3>
                   <p className="text-xs text-slate-500 line-clamp-2">{item.description}</p>
                   <div className="pt-2 flex items-baseline justify-between text-xs">
-                    <span className="font-extrabold text-base text-slate-900">${item.rental_price} / {item.price_basis}</span>
+                    <span className="font-extrabold text-base text-slate-900">₱{item.rental_price} / {item.price_basis}</span>
                     <span className="text-slate-400">{item.location_city}</span>
                   </div>
                 </div>
@@ -474,12 +474,12 @@ export function OwnerDashboard() {
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div>
-              <label className="block text-xs font-bold text-slate-700 mb-1">Rental Price ($)</label>
+              <label className="block text-xs font-bold text-slate-700 mb-1">Rental Price (₱)</label>
               <input
                 type="number"
                 step="0.01"
                 required
-                placeholder="45.00"
+                placeholder="500.00"
                 value={newItem.rentalPrice}
                 onChange={(e) => setNewItem({ ...newItem, rentalPrice: e.target.value })}
                 className="w-full text-xs bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 focus:outline-none focus:border-teal-500"
@@ -500,11 +500,11 @@ export function OwnerDashboard() {
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-slate-700 mb-1">Security Deposit ($)</label>
+              <label className="block text-xs font-bold text-slate-700 mb-1">Security Deposit (₱)</label>
               <input
                 type="number"
                 step="0.01"
-                placeholder="50.00"
+                placeholder="1000.00"
                 value={newItem.securityDeposit}
                 onChange={(e) => setNewItem({ ...newItem, securityDeposit: e.target.value })}
                 className="w-full text-xs bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 focus:outline-none focus:border-teal-500"
@@ -517,7 +517,7 @@ export function OwnerDashboard() {
             <input
               type="text"
               required
-              placeholder="e.g. Seattle, WA (Capitol Hill)"
+              placeholder="e.g. Quezon City, Metro Manila or Cebu City"
               value={newItem.locationCity}
               onChange={(e) => setNewItem({ ...newItem, locationCity: e.target.value })}
               className="w-full text-xs bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 focus:outline-none focus:border-teal-500"

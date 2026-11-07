@@ -55,7 +55,7 @@ export function ItemCard({ item }) {
         {/* Pricing & Owner footer */}
         <div className="mt-3 flex items-baseline justify-between">
           <div>
-            <span className="text-lg font-bold text-slate-900">${item.rental_price}</span>
+            <span className="text-lg font-bold text-slate-900">₱{item.rental_price}</span>
             <span className="text-xs text-slate-500"> / {item.price_basis || 'day'}</span>
           </div>
           {item.owner?.isVerified && (

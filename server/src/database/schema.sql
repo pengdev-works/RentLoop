@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS user_profiles (
 CREATE TABLE IF NOT EXISTS identity_verifications (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-    id_type VARCHAR(50) NOT NULL CHECK (id_type IN ('passport', 'drivers_license', 'national_id', 'student_id', 'other')),
+    id_type VARCHAR(50) NOT NULL CHECK (id_type IN ('passport', 'drivers_license', 'national_id', 'umid', 'postal_id', 'prc_id', 'student_id', 'other')),
     id_number VARCHAR(100) NOT NULL,
     front_image_url TEXT NOT NULL,
     back_image_url TEXT,

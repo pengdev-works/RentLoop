@@ -221,7 +221,7 @@ export function ItemDetailPage() {
               </div>
 
               <div className="text-right">
-                <span className="text-3xl font-extrabold text-slate-900">${item.rental_price}</span>
+                <span className="text-3xl font-extrabold text-slate-900">₱{item.rental_price}</span>
                 <span className="text-xs text-slate-500 block">per {item.price_basis || 'day'}</span>
               </div>
             </div>
@@ -330,7 +330,7 @@ export function ItemDetailPage() {
           <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-md sticky top-24 space-y-6">
             <div className="flex items-baseline justify-between border-b border-slate-100 pb-4">
               <div>
-                <span className="text-2xl font-black text-slate-900">${item.rental_price}</span>
+                <span className="text-2xl font-black text-slate-900">₱{item.rental_price}</span>
                 <span className="text-xs text-slate-500"> / {item.price_basis || 'day'}</span>
               </div>
               <span className="text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
@@ -411,18 +411,18 @@ export function ItemDetailPage() {
                 {durationDays > 0 && (
                   <div className="bg-slate-50 rounded-2xl p-4 border border-slate-200/60 space-y-2 text-xs">
                     <div className="flex justify-between text-slate-600">
-                      <span>${item.rental_price} x {durationDays} {durationDays === 1 ? 'day' : 'days'}</span>
-                      <span className="font-semibold text-slate-900">${subtotal.toFixed(2)}</span>
+                      <span>₱{item.rental_price} x {durationDays} {durationDays === 1 ? 'day' : 'days'}</span>
+                      <span className="font-semibold text-slate-900">₱{subtotal.toFixed(2)}</span>
                     </div>
                     {totalDeposit > 0 && (
                       <div className="flex justify-between text-slate-600">
                         <span>Refundable Security Deposit</span>
-                        <span className="font-semibold text-slate-900">${totalDeposit.toFixed(2)}</span>
+                        <span className="font-semibold text-slate-900">₱{totalDeposit.toFixed(2)}</span>
                       </div>
                     )}
                     <div className="border-t border-slate-200 pt-2 flex justify-between font-bold text-slate-900 text-sm">
                       <span>Estimated Total</span>
-                      <span className="text-teal-700">${(subtotal + totalDeposit).toFixed(2)}</span>
+                      <span className="text-teal-700">₱{(subtotal + totalDeposit).toFixed(2)}</span>
                     </div>
                   </div>
                 )}

@@ -256,7 +256,7 @@ export function RentalDetailPage() {
                 <StatusPill status={rental.status} />
               </div>
               <p className="text-xs text-slate-500 mt-1">
-                Rental Window: <strong>{rental.start_date}</strong> to <strong>{rental.end_date}</strong> • Total Value: <strong>${rental.total_amount}</strong>
+                Rental Window: <strong>{rental.start_date}</strong> to <strong>{rental.end_date}</strong> • Total Value: <strong>₱{rental.total_amount}</strong>
               </p>
             </div>
           </div>
@@ -270,7 +270,7 @@ export function RentalDetailPage() {
             </div>
             <div>
               <span className="text-slate-400 block text-[10px] uppercase font-bold">Security Deposit</span>
-              <strong className="text-slate-900 text-sm">${rental.security_deposit || '0.00'}</strong>
+              <strong className="text-slate-900 text-sm">₱{rental.security_deposit || '0.00'}</strong>
             </div>
           </div>
         </div>

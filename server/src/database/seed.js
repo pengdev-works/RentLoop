@@ -20,7 +20,7 @@ export async function seedDatabase() {
     email: 'admin@rentloop.com',
     password_hash: passwordHash,
     full_name: 'RentLoop System Admin',
-    phone: '+1 (555) 019-2834',
+    phone: '+63 917 888 2026',
     role: 'admin',
     status: 'active'
   });
@@ -29,9 +29,9 @@ export async function seedDatabase() {
   await db.insert('user_profiles', {
     user_id: adminUser.id,
     avatar_url: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80',
-    bio: 'Lead platform administrator and trust & safety officer at RentLoop.',
-    address_city: 'Seattle',
-    address_province: 'WA',
+    bio: 'Lead platform administrator and trust & safety officer at RentLoop Philippines.',
+    address_city: 'Quezon City',
+    address_province: 'Metro Manila',
     trust_score: 5.00,
     completed_rentals_count: 0
   });

@@ -3,27 +3,27 @@
     {
       "id": "11111111-1111-1111-1111-111111111111",
       "email": "admin@rentloop.com",
-      "password_hash": "$2a$10$7GIVmY78jTaN6m0C91h5XuPVupM8fXuSmDsrC4dbx2fUA8vXJajJK",
+      "password_hash": "$2a$10$0Ww53dF/9iwH1/BrhqlIGenFmrkr7xePv642DqV1j1zu9Cs2j3mBC",
       "full_name": "RentLoop System Admin",
-      "phone": "+1 (555) 019-2834",
+      "phone": "+63 917 888 2026",
       "role": "admin",
       "status": "active",
-      "created_at": "2026-11-07T00:24:03.130Z",
-      "updated_at": "2026-11-07T00:24:03.130Z"
+      "created_at": "2026-11-07T00:33:46.846Z",
+      "updated_at": "2026-11-07T00:33:46.846Z"
     }
   ],
   "user_profiles": [
     {
       "user_id": "11111111-1111-1111-1111-111111111111",
       "avatar_url": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
-      "bio": "Lead platform administrator and trust & safety officer at RentLoop.",
-      "address_city": "Seattle",
-      "address_province": "WA",
+      "bio": "Lead platform administrator and trust & safety officer at RentLoop Philippines.",
+      "address_city": "Quezon City",
+      "address_province": "Metro Manila",
       "trust_score": 5,
       "completed_rentals_count": 0,
-      "id": "a97f94a9-5f4e-4ce7-b3b2-8c73ac3924f9",
-      "created_at": "2026-11-07T00:24:03.133Z",
-      "updated_at": "2026-11-07T00:24:03.133Z"
+      "id": "4fcbb6f3-2633-44db-8e2f-23dc587a22ce",
+      "created_at": "2026-11-07T00:33:46.849Z",
+      "updated_at": "2026-11-07T00:33:46.849Z"
     }
   ],
   "identity_verifications": [],
@@ -34,9 +34,9 @@
       "description": "Drills, saws, sanders, generators, and woodworking equipment.",
       "icon_name": "Wrench",
       "is_active": true,
-      "id": "49e6c683-07e8-4978-8497-6129176a53c4",
-      "created_at": "2026-11-07T00:24:03.134Z",
-      "updated_at": "2026-11-07T00:24:03.134Z"
+      "id": "317d497f-45c6-4d67-a485-417d6e4c6fe9",
+      "created_at": "2026-11-07T00:33:46.850Z",
+      "updated_at": "2026-11-07T00:33:46.850Z"
     },
     {
       "name": "Cameras & Photography",
@@ -44,9 +44,9 @@
       "description": "Mirrorless cameras, prime lenses, gimbals, lighting rigs, and drone gear.",
       "icon_name": "Camera",
       "is_active": true,
-      "id": "5d9bcb4c-c639-47d8-b90e-64e551c98825",
-      "created_at": "2026-11-07T00:24:03.135Z",
-      "updated_at": "2026-11-07T00:24:03.135Z"
+      "id": "cc4f7bff-2523-4ba8-b149-51ed23a3d873",
+      "created_at": "2026-11-07T00:33:46.851Z",
+      "updated_at": "2026-11-07T00:33:46.851Z"
     },
     {
       "name": "Outdoor & Camping",
@@ -54,9 +54,9 @@
       "description": "Four-season tents, sleeping systems, stoves, kayaks, and backpacks.",
       "icon_name": "Compass",
       "is_active": true,
-      "id": "82e16224-c09a-4b38-85d5-aaabe0249abd",
-      "created_at": "2026-11-07T00:24:03.137Z",
-      "updated_at": "2026-11-07T00:24:03.137Z"
+      "id": "c242f571-6c9b-427e-ab18-5e9a7658a4ca",
+      "created_at": "2026-11-07T00:33:46.852Z",
+      "updated_at": "2026-11-07T00:33:46.852Z"
     },
     {
       "name": "Audio & Visual Electronics",
@@ -64,9 +64,9 @@
       "description": "PA speakers, high-lumen projectors, microphones, and audio mixers.",
       "icon_name": "Speaker",
       "is_active": true,
-      "id": "eee05b9f-980a-46b5-b125-c768ac24e3e6",
-      "created_at": "2026-11-07T00:24:03.138Z",
-      "updated_at": "2026-11-07T00:24:03.138Z"
+      "id": "a90fc242-c9a4-4228-84ca-97284e63287c",
+      "created_at": "2026-11-07T00:33:46.853Z",
+      "updated_at": "2026-11-07T00:33:46.853Z"
     },
     {
       "name": "Party & Event Supplies",
@@ -74,9 +74,9 @@
       "description": "Canopies, folding tables, chairs, lighting, and event sound systems.",
       "icon_name": "Sparkles",
       "is_active": true,
-      "id": "c0a188cc-5308-425d-aa5f-baa17f4f5bcd",
-      "created_at": "2026-11-07T00:24:03.140Z",
-      "updated_at": "2026-11-07T00:24:03.140Z"
+      "id": "377796f4-cf61-4036-b5b8-b75a6eb33f41",
+      "created_at": "2026-11-07T00:33:46.854Z",
+      "updated_at": "2026-11-07T00:33:46.854Z"
     }
   ],
   "items": [],
@@ -96,9 +96,9 @@
       "type": "system",
       "link_url": "/admin/dashboard",
       "is_read": false,
-      "id": "de28deb2-854e-4fb4-bbad-65bc7a174a9b",
-      "created_at": "2026-11-07T00:24:03.141Z",
-      "updated_at": "2026-11-07T00:24:03.141Z"
+      "id": "15aa45d5-1e3b-47d5-8625-3d52db8c8999",
+      "created_at": "2026-11-07T00:33:46.855Z",
+      "updated_at": "2026-11-07T00:33:46.855Z"
     }
   ],
   "audit_logs": [
@@ -109,9 +109,9 @@
       "target_id": "GLOBAL",
       "details_json": "{\"event\":\"RentLoop initialized cleanly with admin account and system categories only\"}",
       "ip_address": "127.0.0.1",
-      "id": "c1160948-2c57-48c7-bb68-a85b81c99d6d",
-      "created_at": "2026-11-07T00:24:03.143Z",
-      "updated_at": "2026-11-07T00:24:03.143Z"
+      "id": "b08f3b36-91e2-4313-93cf-ddfcfab242e9",
+      "created_at": "2026-11-07T00:33:46.856Z",
+      "updated_at": "2026-11-07T00:33:46.856Z"
     }
   ]
 }

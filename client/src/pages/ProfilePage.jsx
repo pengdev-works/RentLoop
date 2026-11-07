@@ -244,16 +244,20 @@ export function ProfilePage() {
             <form onSubmit={handleVerificationSubmit} className="space-y-5 pt-2">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">Identification Type</label>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Philippine Government ID Type</label>
                   <select
                     value={idType}
                     onChange={(e) => setIdType(e.target.value)}
                     className="w-full text-xs bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 focus:outline-none focus:border-teal-500"
                   >
-                    <option value="drivers_license">Driver's License</option>
-                    <option value="passport">Passport</option>
-                    <option value="national_id">National ID Card</option>
-                    <option value="student_id">Official Student ID</option>
+                    <option value="drivers_license">Driver's License (LTO)</option>
+                    <option value="national_id">Philippine National ID (PhilSys)</option>
+                    <option value="passport">Philippine Passport (DFA)</option>
+                    <option value="umid">UMID (Unified Multi-Purpose ID)</option>
+                    <option value="postal_id">Postal ID (PhilPost)</option>
+                    <option value="prc_id">PRC License ID</option>
+                    <option value="student_id">Official Student / University ID</option>
+                    <option value="other">Other Valid Government ID</option>
                   </select>
                 </div>
 
@@ -262,7 +266,7 @@ export function ProfilePage() {
                   <input
                     type="text"
                     required
-                    placeholder="e.g. DL-8923019 or PASS-592810"
+                    placeholder="e.g. N02-19-123456 or 1234-5678-9012"
                     value={idNumber}
                     onChange={(e) => setIdNumber(e.target.value)}
                     className="w-full text-xs bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 focus:outline-none focus:border-teal-500"

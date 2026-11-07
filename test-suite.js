@@ -119,10 +119,10 @@ async function runTests() {
         description: 'High-precision real-time laser measurement tool with backlit color display.',
         categoryId: firstCatId,
         condition: 'like_new',
-        rentalPrice: 18.00,
+        rentalPrice: 500.00,
         priceBasis: 'daily',
-        securityDeposit: 40.00,
-        locationCity: 'Seattle, WA',
+        securityDeposit: 1000.00,
+        locationCity: 'Quezon City, Metro Manila',
         imageUrls: ['https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=600&q=80']
       }
     });

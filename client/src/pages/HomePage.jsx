@@ -72,7 +72,7 @@ export function HomePage() {
             {/* Trust Pill */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/80 border border-slate-700 text-teal-400 text-xs font-semibold backdrop-blur-md">
               <ShieldCheck className="w-4 h-4" />
-              <span>Identity-Verified Peer-to-Peer Rental Network</span>
+              <span>The Philippines' Trusted Peer-to-Peer Rental Network</span>
             </div>
 
             {/* Main Headline */}
@@ -81,7 +81,7 @@ export function HomePage() {
             </h1>
 
             <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
-              RentLoop connects individuals to share equipment safely. Documented pre/post condition inspections, verified identities, and tamper-evident rental records eliminate disputes.
+              RentLoop connects Filipinos across Metro Manila, Cebu, Davao, and nationwide to rent personal belongings and equipment with verified government IDs, condition inspections, and zero fraud.
             </p>
 
             {/* Hero Search Box */}
@@ -91,7 +91,7 @@ export function HomePage() {
                   <Search className="w-5 h-5 text-slate-400 mr-2" />
                   <input
                     type="text"
-                    placeholder="Search camera gear, power tools, camping tents..."
+                    placeholder="Search camera gear in QC, power tools in Makati, tents in Baguio..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="w-full text-slate-800 text-sm focus:outline-none placeholder:text-slate-400"

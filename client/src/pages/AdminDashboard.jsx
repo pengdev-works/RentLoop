@@ -520,7 +520,7 @@ export function AdminDashboard() {
                     <td className="px-6 py-4 text-slate-600">{r.renterName}</td>
                     <td className="px-6 py-4 text-slate-600">{r.ownerName}</td>
                     <td className="px-6 py-4 text-slate-500">{r.start_date} to {r.end_date}</td>
-                    <td className="px-6 py-4 font-bold text-slate-900">${r.total_amount}</td>
+                    <td className="px-6 py-4 font-bold text-slate-900">₱{r.total_amount}</td>
                     <td className="px-6 py-4">
                       <StatusPill status={r.status} size="xs" />
                     </td>

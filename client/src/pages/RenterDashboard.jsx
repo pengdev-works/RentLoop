@@ -155,7 +155,7 @@ export function RenterDashboard() {
                         {r.start_date} to {r.end_date}
                       </span>
                       <span>•</span>
-                      <span className="font-bold text-slate-900">${r.calculated_price}</span>
+                      <span className="font-bold text-slate-900">₱{r.calculated_price}</span>
                     </div>
                   </div>
                 </div>
@@ -192,7 +192,7 @@ export function RenterDashboard() {
                       <StatusPill status={r.status} size="xs" />
                     </div>
                     <p className="text-xs text-slate-500">
-                      Requested: {r.start_date} to {r.end_date} • Total: ${r.calculated_price}
+                      Requested: {r.start_date} to {r.end_date} • Total: ₱{r.calculated_price}
                     </p>
                     <p className="text-xs text-slate-600 italic">"{r.rental_purpose}"</p>
                     {r.rejection_reason && (
