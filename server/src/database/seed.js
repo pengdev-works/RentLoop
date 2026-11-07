@@ -14,68 +14,71 @@ export async function seedDatabase() {
   const salt = await bcrypt.genSalt(10);
   const passwordHash = await bcrypt.hash('Password123!', salt);
 
-  // 2. Seed Only System Admin User
-  const adminUser = await db.insert('users', {
-    id: '11111111-1111-1111-1111-111111111111',
-    email: 'admin@rentloop.com',
-    password_hash: passwordHash,
-    full_name: 'RentLoop System Admin',
-    phone: '+63 917 888 2026',
-    role: 'admin',
-    status: 'active'
-  });
+  // 2. Seed Only System Admin User (idempotent check)
+  let adminUser = await db.findOne('users', { email: 'admin@rentloop.com' });
+  if (!adminUser) {
+    adminUser = await db.insert('users', {
+      id: '11111111-1111-1111-1111-111111111111',
+      email: 'admin@rentloop.com',
+      password_hash: passwordHash,
+      full_name: 'RentLoop System Admin',
+      phone: '+63 917 888 2026',
+      role: 'admin',
+      status: 'active'
+    });
 
-  // Admin Profile
-  await db.insert('user_profiles', {
-    user_id: adminUser.id,
-    avatar_url: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80',
-    bio: 'Lead platform administrator and trust & safety officer at RentLoop Philippines.',
-    address_city: 'Quezon City',
-    address_province: 'Metro Manila',
-    trust_score: 5.00,
-    completed_rentals_count: 0
-  });
+    // Admin Profile
+    await db.insert('user_profiles', {
+      user_id: adminUser.id,
+      avatar_url: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80',
+      bio: 'Lead platform administrator and trust & safety officer at RentLoop Philippines.',
+      address_city: 'Quezon City',
+      address_province: 'Metro Manila',
+      trust_score: 5.00,
+      completed_rentals_count: 0
+    });
+  }
 
   // 3. System Item Categories (essential structure for listing items)
-  await db.insert('item_categories', {
-    name: 'Power Tools & Workshop',
-    slug: 'power-tools-workshop',
-    description: 'Drills, saws, sanders, generators, and woodworking equipment.',
-    icon_name: 'Wrench',
-    is_active: true
-  });
+  const defaultCategories = [
+    {
+      name: 'Power Tools & Workshop',
+      slug: 'power-tools-workshop',
+      description: 'Drills, saws, sanders, generators, and woodworking equipment.',
+      icon_name: 'Wrench'
+    },
+    {
+      name: 'Cameras & Photography',
+      slug: 'cameras-photography',
+      description: 'Mirrorless cameras, prime lenses, gimbals, lighting rigs, and drone gear.',
+      icon_name: 'Camera'
+    },
+    {
+      name: 'Outdoor & Camping',
+      slug: 'outdoor-camping',
+      description: 'Four-season tents, sleeping systems, stoves, kayaks, and backpacks.',
+      icon_name: 'Compass'
+    },
+    {
+      name: 'Audio & Visual Electronics',
+      slug: 'audio-visual',
+      description: 'PA speakers, high-lumen projectors, microphones, and audio mixers.',
+      icon_name: 'Speaker'
+    },
+    {
+      name: 'Party & Event Supplies',
+      slug: 'party-event',
+      description: 'Canopies, folding tables, chairs, lighting, and event sound systems.',
+      icon_name: 'Sparkles'
+    }
+  ];
 
-  await db.insert('item_categories', {
-    name: 'Cameras & Photography',
-    slug: 'cameras-photography',
-    description: 'Mirrorless cameras, prime lenses, gimbals, lighting rigs, and drone gear.',
-    icon_name: 'Camera',
-    is_active: true
-  });
-
-  await db.insert('item_categories', {
-    name: 'Outdoor & Camping',
-    slug: 'outdoor-camping',
-    description: 'Four-season tents, sleeping systems, stoves, kayaks, and backpacks.',
-    icon_name: 'Compass',
-    is_active: true
-  });
-
-  await db.insert('item_categories', {
-    name: 'Audio & Visual Electronics',
-    slug: 'audio-visual',
-    description: 'PA speakers, high-lumen projectors, microphones, and audio mixers.',
-    icon_name: 'Speaker',
-    is_active: true
-  });
-
-  await db.insert('item_categories', {
-    name: 'Party & Event Supplies',
-    slug: 'party-event',
-    description: 'Canopies, folding tables, chairs, lighting, and event sound systems.',
-    icon_name: 'Sparkles',
-    is_active: true
-  });
+  for (const cat of defaultCategories) {
+    const existing = await db.findOne('item_categories', { slug: cat.slug });
+    if (!existing) {
+      await db.insert('item_categories', { ...cat, is_active: true });
+    }
+  }
 
   // 4. Initial System Notification for Admin
   await db.insert('notifications', {

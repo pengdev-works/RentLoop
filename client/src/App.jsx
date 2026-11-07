@@ -36,7 +36,12 @@ export function App() {
   return (
     <AuthProvider>
       <NotificationProvider>
-        <BrowserRouter>
+        <BrowserRouter
+          future={{
+            v7_startTransition: true,
+            v7_relativeSplatPath: true,
+          }}
+        >
           <div className="min-h-screen flex flex-col bg-[#F8FAFC]">
             <Navbar />
             <main className="flex-1">

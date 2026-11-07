@@ -14,8 +14,8 @@ export function AuthProvider({ children }) {
         try {
           const userData = await api.getMe();
           setUser(userData);
-        } catch (err) {
-          console.error('Session expired or invalid:', err.message);
+        } catch {
+          // Stale, reset or expired token - clean up quietly
           localStorage.removeItem('rentloop_token');
           setUser(null);
         }

@@ -195,12 +195,19 @@ export const db = {
   async insert(table, data) {
     const id = data.id || uuidv4();
     const now = new Date().toISOString();
+    const tablesWithUpdatedAt = ['users', 'user_profiles', 'identity_verifications', 'items', 'rental_requests', 'rentals', 'reports'];
+
     const record = {
       ...data,
-      id,
-      created_at: data.created_at || now,
-      updated_at: data.updated_at || now
+      id
     };
+
+    if (!['rental_condition_reports', 'rental_condition_images'].includes(table)) {
+      record.created_at = data.created_at || now;
+    }
+    if (tablesWithUpdatedAt.includes(table) || data.updated_at) {
+      record.updated_at = data.updated_at || now;
+    }
 
     if (usePostgres && pgPool) {
       const keys = Object.keys(record);
