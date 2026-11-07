@@ -88,8 +88,8 @@ export function RegisterPage() {
     <div className="min-h-[88vh] flex items-center justify-center py-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl w-full grid grid-cols-1 lg:grid-cols-12 bg-white rounded-3xl border border-slate-200/90 shadow-xl overflow-hidden">
         
-        {/* ── Left Column: Brand Showcase (Logo Only) ── */}
-        <div className="lg:col-span-5 bg-gradient-to-br from-slate-950 via-slate-900 to-teal-950 text-white p-8 sm:p-12 flex flex-col justify-center items-center relative overflow-hidden min-h-[220px] lg:min-h-full">
+        {/* ── Left Column: Brand Showcase (Responsive Logo) ── */}
+        <div className="lg:col-span-5 bg-gradient-to-br from-slate-950 via-slate-900 to-teal-950 text-white py-6 px-4 sm:p-10 lg:p-12 flex flex-col justify-center items-center relative overflow-hidden min-h-0 lg:min-h-full">
           
           {/* Ambient Glows */}
           <div className="absolute -top-24 -left-24 w-72 h-72 rounded-full bg-teal-500/15 blur-3xl pointer-events-none" />
@@ -101,7 +101,7 @@ export function RegisterPage() {
               <img
                 src="/rentloop-logo.png"
                 alt="RentLoop Logo"
-                className="w-32 h-32 sm:w-44 sm:h-44 object-contain rounded-3xl drop-shadow-2xl"
+                className="w-20 h-20 sm:w-28 sm:h-28 lg:w-40 lg:h-40 object-contain rounded-2xl sm:rounded-3xl drop-shadow-2xl"
               />
             </Link>
           </div>
@@ -109,7 +109,7 @@ export function RegisterPage() {
         </div>
 
         {/* ── Right Column: Registration Form ── */}
-        <div className="lg:col-span-7 p-6 sm:p-10 flex flex-col justify-center">
+        <div className="lg:col-span-7 p-5 sm:p-8 lg:p-10 flex flex-col justify-center">
           
           <div className="max-w-md w-full mx-auto space-y-5">
             

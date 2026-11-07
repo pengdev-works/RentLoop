@@ -20,7 +20,9 @@ import {
   CheckCircle2,
   XCircle,
   Eye,
-  AlertCircle
+  AlertCircle,
+  Menu,
+  X
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { api } from '../services/api';
@@ -42,6 +44,7 @@ export function AdminDashboard() {
 
   const [activeTab, setActiveTab] = useState('overview'); // 'overview' | 'verifications' | 'users' | 'reports' | 'rentals' | 'logs'
   const [userSearchQuery, setUserSearchQuery] = useState('');
+  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
 
   // Verification Review Modal
   const [selectedVerif, setSelectedVerif] = useState(null);
@@ -203,38 +206,60 @@ export function AdminDashboard() {
   });
 
   return (
-    <div className="min-h-screen bg-slate-100/80 flex text-slate-800 font-sans antialiased overflow-hidden">
+    <div className="min-h-screen bg-slate-100/80 flex text-slate-800 font-sans antialiased overflow-hidden relative">
       
+      {/* Mobile Drawer Backdrop Overlay */}
+      {mobileSidebarOpen && (
+        <div
+          onClick={() => setMobileSidebarOpen(false)}
+          className="fixed inset-0 bg-slate-950/70 z-40 backdrop-blur-xs lg:hidden transition-opacity"
+        />
+      )}
+
       {/* ========================================================= */}
       {/* 1. ENTERPRISE TRUE FULL-HEIGHT SIDEBAR                    */}
       {/* ========================================================= */}
-      <aside className="w-64 lg:w-72 bg-slate-950 text-slate-300 flex flex-col justify-between shrink-0 h-screen sticky top-0 border-r border-slate-800/90 z-30 select-none shadow-2xl">
+      <aside
+        className={`fixed inset-y-0 left-0 z-50 w-64 sm:w-72 bg-slate-950 text-slate-300 flex flex-col justify-between shrink-0 h-screen border-r border-slate-800/90 select-none shadow-2xl transition-transform duration-300 ease-in-out lg:static lg:translate-x-0 ${
+          mobileSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+        }`}
+      >
         
         {/* TOP BRANDING & NAVIGATION */}
         <div className="flex flex-col min-h-0 flex-1">
           
           {/* Logo & Platform Info Header */}
-          <div className="p-5 border-b border-slate-800/80 flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-white/5 border border-white/10 p-1 flex items-center justify-center shrink-0">
-              <img
-                src="/rentloop-logo.png"
-                alt="RentLoop Logo"
-                className="w-full h-full object-contain"
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                  e.target.parentElement.innerHTML = '<span class="text-indigo-400 font-black text-sm">RL</span>';
-                }}
-              />
-            </div>
-            <div className="min-w-0">
-              <div className="flex items-center gap-1.5">
-                <span className="font-black text-white text-base tracking-tight">RentLoop</span>
-                <span className="text-[9px] font-black tracking-wider px-1.5 py-0.5 rounded bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 uppercase">
-                  Admin
-                </span>
+          <div className="p-4 sm:p-5 border-b border-slate-800/80 flex items-center justify-between gap-3">
+            <div className="flex items-center gap-3 min-w-0">
+              <div className="w-10 h-10 rounded-2xl bg-white/5 border border-white/10 p-1 flex items-center justify-center shrink-0">
+                <img
+                  src="/rentloop-logo.png"
+                  alt="RentLoop Logo"
+                  className="w-full h-full object-contain"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    e.target.parentElement.innerHTML = '<span class="text-indigo-400 font-black text-sm">RL</span>';
+                  }}
+                />
               </div>
-              <p className="text-[11px] text-slate-400 font-medium truncate">Trust & Safety Suite</p>
+              <div className="min-w-0">
+                <div className="flex items-center gap-1.5">
+                  <span className="font-black text-white text-base tracking-tight">RentLoop</span>
+                  <span className="text-[9px] font-black tracking-wider px-1.5 py-0.5 rounded bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 uppercase">
+                    Admin
+                  </span>
+                </div>
+                <p className="text-[11px] text-slate-400 font-medium truncate">Trust & Safety Suite</p>
+              </div>
             </div>
+
+            {/* Close Button on Mobile */}
+            <button
+              onClick={() => setMobileSidebarOpen(false)}
+              className="lg:hidden p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-900 transition-colors"
+            >
+              <X className="w-5 h-5" />
+            </button>
           </div>
 
           {/* Nav List with Scroll if needed */}
@@ -250,7 +275,10 @@ export function AdminDashboard() {
                   return (
                     <button
                       key={item.id}
-                      onClick={() => setActiveTab(item.id)}
+                      onClick={() => {
+                        setActiveTab(item.id);
+                        setMobileSidebarOpen(false);
+                      }}
                       className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all text-left ${
                         isActive
                           ? 'bg-indigo-600 text-white shadow-md shadow-indigo-950/50'
@@ -322,29 +350,40 @@ export function AdminDashboard() {
       <main className="flex-1 min-w-0 flex flex-col h-screen overflow-y-auto">
         
         {/* TOP WORKSPACE BAR */}
-        <header className="sticky top-0 z-20 bg-white/95 backdrop-blur-md border-b border-slate-200/90 px-6 lg:px-8 py-3.5 flex items-center justify-between shadow-2xs">
-          <div className="flex items-center gap-2 text-xs">
-            <Shield className="w-4 h-4 text-indigo-600" />
-            <span className="font-semibold text-slate-400">System Admin Control Room</span>
-            <span className="text-slate-300">/</span>
-            <span className="font-bold text-slate-900">{currentNav.label}</span>
+        <header className="sticky top-0 z-20 bg-white/95 backdrop-blur-md border-b border-slate-200/90 px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between shadow-2xs">
+          <div className="flex items-center gap-2 text-xs min-w-0">
+            {/* Hamburger Trigger for Mobile */}
+            <button
+              type="button"
+              onClick={() => setMobileSidebarOpen(true)}
+              className="lg:hidden p-1.5 -ml-1 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-lg shrink-0 transition-colors"
+              title="Open Admin Navigation"
+            >
+              <Menu className="w-5 h-5" />
+            </button>
+
+            <Shield className="w-4 h-4 text-indigo-600 shrink-0 hidden sm:block" />
+            <span className="font-semibold text-slate-400 hidden sm:inline truncate">Admin Room</span>
+            <span className="text-slate-300 hidden sm:inline">/</span>
+            <span className="font-bold text-slate-900 truncate">{currentNav.label}</span>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             <button
               onClick={loadAllAdminData}
               disabled={loading}
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-xs rounded-xl border border-slate-200 shadow-2xs transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-xs rounded-xl border border-slate-200 shadow-2xs transition-colors"
             >
               <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin text-indigo-600' : ''}`} />
-              <span>Refresh Metrics</span>
+              <span className="hidden sm:inline">Refresh Metrics</span>
             </button>
 
             <Link
               to="/"
-              className="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 text-xs font-semibold text-indigo-600 hover:text-indigo-800 bg-indigo-50/60 hover:bg-indigo-100/60 rounded-xl transition-colors"
+              className="inline-flex items-center gap-1 px-2.5 sm:px-3 py-1.5 text-xs font-semibold text-indigo-600 hover:text-indigo-800 bg-indigo-50/60 hover:bg-indigo-100/60 rounded-xl transition-colors"
             >
-              <span>View Storefront</span>
+              <span className="hidden sm:inline">View Storefront</span>
+              <span className="sm:hidden">Store</span>
               <ExternalLink className="w-3 h-3" />
             </Link>
           </div>

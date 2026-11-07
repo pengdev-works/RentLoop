@@ -217,10 +217,10 @@ export function OwnerDashboard() {
       </div>
 
       {/* Tabs */}
-      <div className="flex items-center gap-2 border-b border-slate-200">
+      <div className="flex items-center gap-2 border-b border-slate-200 overflow-x-auto">
         <button
           onClick={() => setActiveTab('requests')}
-          className={`px-4 py-3 text-xs font-bold border-b-2 transition-all ${
+          className={`px-4 py-3 text-xs font-bold border-b-2 transition-all shrink-0 ${
             activeTab === 'requests'
               ? 'border-teal-600 text-teal-700 bg-teal-50/50 rounded-t-xl'
               : 'border-transparent text-slate-500 hover:text-slate-800'
@@ -231,7 +231,7 @@ export function OwnerDashboard() {
 
         <button
           onClick={() => setActiveTab('listings')}
-          className={`px-4 py-3 text-xs font-bold border-b-2 transition-all ${
+          className={`px-4 py-3 text-xs font-bold border-b-2 transition-all shrink-0 ${
             activeTab === 'listings'
               ? 'border-teal-600 text-teal-700 bg-teal-50/50 rounded-t-xl'
               : 'border-transparent text-slate-500 hover:text-slate-800'
@@ -242,7 +242,7 @@ export function OwnerDashboard() {
 
         <button
           onClick={() => setActiveTab('rentals')}
-          className={`px-4 py-3 text-xs font-bold border-b-2 transition-all ${
+          className={`px-4 py-3 text-xs font-bold border-b-2 transition-all shrink-0 ${
             activeTab === 'rentals'
               ? 'border-teal-600 text-teal-700 bg-teal-50/50 rounded-t-xl'
               : 'border-transparent text-slate-500 hover:text-slate-800'

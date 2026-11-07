@@ -173,8 +173,13 @@ body.swal2-toast-shown .swal2-container.swal2-top-end {
 }
 
 @layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-[#F8FAFC] text-slate-800;
+    overflow-x: hidden;
   }
 }
 

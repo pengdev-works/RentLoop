@@ -92,10 +92,10 @@ export function RenterDashboard() {
       </div>
 
       {/* Tabs */}
-      <div className="flex items-center gap-2 border-b border-slate-200">
+      <div className="flex items-center gap-2 border-b border-slate-200 overflow-x-auto">
         <button
           onClick={() => setActiveTab('active')}
-          className={`px-4 py-3 text-xs font-bold border-b-2 transition-all ${
+          className={`px-4 py-3 text-xs font-bold border-b-2 transition-all shrink-0 ${
             activeTab === 'active'
               ? 'border-teal-600 text-teal-700 bg-teal-50/50 rounded-t-xl'
               : 'border-transparent text-slate-500 hover:text-slate-800'
@@ -106,7 +106,7 @@ export function RenterDashboard() {
 
         <button
           onClick={() => setActiveTab('requests')}
-          className={`px-4 py-3 text-xs font-bold border-b-2 transition-all ${
+          className={`px-4 py-3 text-xs font-bold border-b-2 transition-all shrink-0 ${
             activeTab === 'requests'
               ? 'border-teal-600 text-teal-700 bg-teal-50/50 rounded-t-xl'
               : 'border-transparent text-slate-500 hover:text-slate-800'
@@ -117,7 +117,7 @@ export function RenterDashboard() {
 
         <button
           onClick={() => setActiveTab('history')}
-          className={`px-4 py-3 text-xs font-bold border-b-2 transition-all ${
+          className={`px-4 py-3 text-xs font-bold border-b-2 transition-all shrink-0 ${
             activeTab === 'history'
               ? 'border-teal-600 text-teal-700 bg-teal-50/50 rounded-t-xl'
               : 'border-transparent text-slate-500 hover:text-slate-800'

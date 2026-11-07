@@ -291,7 +291,7 @@ export function RentalDetailPage() {
         </div>
 
         {/* 5-STAGE PROGRESS PIPELINE */}
-        <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 pt-2">
+        <div className="grid grid-cols-2 sm:grid-cols-5 gap-2.5 pt-2">
           
           <div className={`p-3 rounded-2xl border text-center space-y-1 ${
             ['ready_for_pickup', 'active', 'return_pending', 'completed'].includes(rental.status)
@@ -331,7 +331,7 @@ export function RentalDetailPage() {
             <span className="text-xs font-semibold">{postReport ? 'Verified' : 'Pending'}</span>
           </div>
 
-          <div className={`p-3 rounded-2xl border text-center space-y-1 ${
+          <div className={`p-3 rounded-2xl border text-center space-y-1 col-span-2 sm:col-span-1 ${
             rental.status === 'completed'
               ? 'bg-slate-900 border-slate-900 text-white'
               : 'bg-slate-50 border-slate-200 text-slate-400'

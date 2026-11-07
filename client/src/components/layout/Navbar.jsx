@@ -387,47 +387,87 @@ export function Navbar() {
           <Link
             to="/items"
             onClick={() => setMobileMenuOpen(false)}
-            className="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-50"
+            className="block px-3.5 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-50 transition-colors"
           >
             Browse All Items
           </Link>
 
-          {user && (
+          {user ? (
             <>
               {isAdmin ? (
-                <Link
-                  to="/admin/dashboard"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="block px-3 py-2 rounded-lg text-sm font-bold text-indigo-700 bg-indigo-50"
-                >
-                  Admin Control Center
-                </Link>
+                <>
+                  <Link
+                    to="/admin/dashboard"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block px-3.5 py-2.5 rounded-xl text-sm font-bold text-indigo-700 bg-indigo-50 border border-indigo-100"
+                  >
+                    Admin Control Center
+                  </Link>
+                </>
               ) : (
                 <>
                   <Link
+                    to="/owner/dashboard?action=new"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-sm font-bold text-white bg-teal-600 hover:bg-teal-700 shadow-xs"
+                  >
+                    <PlusCircle className="w-4 h-4" />
+                    <span>+ List an Item for Rent</span>
+                  </Link>
+                  <Link
                     to="/renter/dashboard"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-50"
+                    className="block px-3.5 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-50 transition-colors"
                   >
                     Renter Dashboard
                   </Link>
                   <Link
                     to="/owner/dashboard"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-50"
+                    className="block px-3.5 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-50 transition-colors"
                   >
                     Owner Dashboard
                   </Link>
                   <Link
                     to="/profile"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-50"
+                    className="block px-3.5 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-50 transition-colors"
                   >
                     Profile & Identity Verification
                   </Link>
                 </>
               )}
+
+              <div className="pt-2 border-t border-slate-100">
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    handleLogout();
+                  }}
+                  className="w-full flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-sm font-bold text-rose-600 hover:bg-rose-50 transition-colors text-left"
+                >
+                  <LogOut className="w-4 h-4" />
+                  <span>Sign Out</span>
+                </button>
+              </div>
             </>
+          ) : (
+            <div className="pt-2 border-t border-slate-100 grid grid-cols-2 gap-2">
+              <Link
+                to="/login"
+                onClick={() => setMobileMenuOpen(false)}
+                className="py-2.5 text-center text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors"
+              >
+                Log In
+              </Link>
+              <Link
+                to="/register"
+                onClick={() => setMobileMenuOpen(false)}
+                className="py-2.5 text-center text-xs font-bold text-white bg-teal-600 hover:bg-teal-700 rounded-xl shadow-xs transition-colors"
+              >
+                Get Started
+              </Link>
+            </div>
           )}
         </div>
       )}
