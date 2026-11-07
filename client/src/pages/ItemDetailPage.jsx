@@ -18,6 +18,7 @@ import { api } from '../services/api';
 import { useAuth } from '../context/AuthContext';
 import { StatusPill } from '../components/common/StatusPill';
 import { TrustBadge } from '../components/common/TrustBadge';
+import { toastErr, alertSuccess } from '../utils/swal';
 
 export function ItemDetailPage() {
   const { id } = useParams();
@@ -108,21 +109,25 @@ export function ItemDetailPage() {
 
     if (isOwner) {
       setBookingError('You are the owner of this item.');
+      toastErr('You cannot rent your own item listing.');
       return;
     }
 
     if (!startDate || !endDate) {
       setBookingError('Please select both start and end rental dates.');
+      toastErr('Please select both start and end dates.');
       return;
     }
 
     if (new Date(endDate) < new Date(startDate)) {
       setBookingError('End date must be on or after start date.');
+      toastErr('End date must be on or after start date.');
       return;
     }
 
     if (!rentalPurpose.trim()) {
       setBookingError('Please explain the purpose of your rental for the item owner.');
+      toastErr('Please explain your rental purpose.');
       return;
     }
 
@@ -137,6 +142,7 @@ export function ItemDetailPage() {
 
     if (conflict) {
       setBookingError('These dates overlap with an existing approved rental. Please pick another timeframe.');
+      toastErr('Selected dates overlap with an existing booking.');
       return;
     }
 
@@ -149,8 +155,13 @@ export function ItemDetailPage() {
         rentalPurpose
       });
       setBookingSuccess(true);
+      alertSuccess(
+        'Request Sent!',
+        'Your rental request has been delivered to the owner. You will be notified once reviewed!'
+      );
     } catch (err) {
       setBookingError(err.message);
+      toastErr(err.message || 'Failed to submit rental request.');
     } finally {
       setSubmitting(false);
     }

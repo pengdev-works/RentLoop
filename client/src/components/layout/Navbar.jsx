@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useNotifications } from '../../context/NotificationContext';
+import { toastOk } from '../../utils/swal';
 
 export function Navbar() {
   const { user, logout, isAdmin } = useAuth();
@@ -37,6 +38,7 @@ export function Navbar() {
 
   const handleLogout = () => {
     logout();
+    toastOk('Signed out successfully.');
     navigate('/login');
   };
 

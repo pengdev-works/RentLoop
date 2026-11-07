@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { api } from '../services/api';
 import { StatusPill } from '../components/common/StatusPill';
+import { confirmDanger, toastOk, toastErr } from '../utils/swal';
 
 export function RenterDashboard() {
   const [requests, setRequests] = useState([]);
@@ -34,12 +35,18 @@ export function RenterDashboard() {
   }, []);
 
   const handleCancelRequest = async (id) => {
-    if (!window.confirm('Are you sure you want to cancel this rental request?')) return;
+    const isConfirmed = await confirmDanger(
+      'Cancel Rental Request?',
+      'Are you sure you want to cancel this booking inquiry?',
+      'Yes, Cancel Request'
+    );
+    if (!isConfirmed) return;
     try {
       await api.cancelRequest(id);
       setRequests(prev => prev.map(r => r.id === id ? { ...r, status: 'cancelled' } : r));
+      toastOk('Rental request cancelled.');
     } catch (err) {
-      alert(err.message);
+      toastErr(err.message || 'Failed to cancel request.');
     }
   };
 

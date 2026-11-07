@@ -51,19 +51,7 @@ export function Footer() {
               <li><Link to="/profile" className="hover:text-teal-400 transition-colors">Submit Verification Documents</Link></li>
             </ul>
           </div>
-
-          {/* Demonstration & Capstone Info */}
-          <div>
-            <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4">Platform Info</h4>
-            <p className="text-xs text-slate-400 leading-relaxed mb-3">
-              Capstone Project: Full-stack implementation featuring PostgreSQL, Node.js REST API, Role-Based Access Control, and condition evidence tracking.
-            </p>
-            <div className="bg-slate-800/80 p-3 rounded-xl border border-slate-700 text-[11px] text-slate-400">
-              <span className="font-semibold text-teal-300">Default Admin Account:</span>
-              <p className="mt-1">Admin: admin@rentloop.com</p>
-              <p>Password: Password123!</p>
-            </div>
-          </div>
+          
         </div>
 
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">

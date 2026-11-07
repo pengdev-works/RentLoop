@@ -3,46 +3,46 @@
     {
       "id": "11111111-1111-1111-1111-111111111111",
       "email": "admin@rentloop.com",
-      "password_hash": "$2a$10$wGU7tgxlwHX.fK1/Za3DTugu00ZUfI0wH7YG.F180mcRWvxa/E/Ra",
+      "password_hash": "$2a$10$rN3aHR/2tcEin3/iqHDv/e3QVX4tW7KPTsdFSUTSrP07dKAPWXmuu",
       "full_name": "RentLoop System Admin",
       "phone": "+63 917 888 2026",
       "role": "admin",
       "status": "active",
-      "created_at": "2026-11-07T00:50:59.707Z",
-      "updated_at": "2026-11-07T00:50:59.707Z"
+      "created_at": "2026-11-07T01:59:18.573Z",
+      "updated_at": "2026-11-07T01:59:18.573Z"
     },
     {
-      "email": "owner.1794012659904@rentloop.com",
-      "password_hash": "$2a$10$UnZc0nzmaQxCnipQuMp9qunOmnLq.B.sF6jxET4qwJaVCPvCNIpWu",
+      "email": "owner.1794016758793@rentloop.com",
+      "password_hash": "$2a$10$pgozcn0DlzBVq08ZIGwi5OHnDbEU.AMH.niCmdar0HKiT37NvcrnS",
       "full_name": "Test Item Owner",
       "phone": null,
       "role": "user",
       "status": "active",
-      "id": "f334dbc5-3ea8-4ea1-87bd-b945c762a625",
-      "created_at": "2026-11-07T00:50:59.992Z",
-      "updated_at": "2026-11-07T00:50:59.992Z"
+      "id": "d2bf66bf-5179-46af-82e9-2d4822193484",
+      "created_at": "2026-11-07T01:59:18.892Z",
+      "updated_at": "2026-11-07T01:59:18.892Z"
     },
     {
-      "email": "renter.1794012660002@rentloop.com",
-      "password_hash": "$2a$10$XjMZWh4KWj.ymGNYReakn.nJ6KvZekInv/GaMK45oDi9/zgLZKN4C",
+      "email": "renter.1794016758900@rentloop.com",
+      "password_hash": "$2a$10$TrkVTNp3lGmUf8SMcRUkAO8rPxzeaC96uexcnzWKe2kEEGoBIGddO",
       "full_name": "Test Item Renter",
       "phone": null,
       "role": "user",
       "status": "active",
-      "id": "fc88fcf9-4568-4f82-ab1a-60702fa71a5c",
-      "created_at": "2026-11-07T00:51:00.096Z",
-      "updated_at": "2026-11-07T00:51:00.096Z"
+      "id": "36f03123-b092-466c-a98b-c01db0982dd8",
+      "created_at": "2026-11-07T01:59:18.983Z",
+      "updated_at": "2026-11-07T01:59:18.983Z"
     },
     {
-      "email": "newuser.1794012660103@rentloop.com",
-      "password_hash": "$2a$10$ov.DjvtaNnVhBUWXW3yNIuanMet6kcZmcItwC.UusLK2XyuicBWTy",
+      "email": "newuser.1794016758993@rentloop.com",
+      "password_hash": "$2a$10$34uKikE5G3iy29DODdtrZesuzjSZz3nw1tzK9gzxPlWXZHzRYU.C.",
       "full_name": "New Test User",
       "phone": null,
       "role": "user",
       "status": "active",
-      "id": "b1aa7399-d0ca-40b2-a1e4-373c4a93d1a0",
-      "created_at": "2026-11-07T00:51:00.198Z",
-      "updated_at": "2026-11-07T00:51:00.198Z"
+      "id": "22ad3906-c8bf-464c-8ca1-51e0d4cf1f5b",
+      "created_at": "2026-11-07T01:59:19.081Z",
+      "updated_at": "2026-11-07T01:59:19.081Z"
     }
   ],
   "user_profiles": [
@@ -54,45 +54,45 @@
       "address_province": "Metro Manila",
       "trust_score": 5,
       "completed_rentals_count": 0,
-      "id": "a6555a24-42b6-4e98-8cae-67d8ec01ee60",
-      "created_at": "2026-11-07T00:50:59.710Z",
-      "updated_at": "2026-11-07T00:50:59.710Z"
+      "id": "aa02393e-e4bb-4e0d-9db8-3522000d40a3",
+      "created_at": "2026-11-07T01:59:18.576Z",
+      "updated_at": "2026-11-07T01:59:18.576Z"
     },
     {
-      "user_id": "f334dbc5-3ea8-4ea1-87bd-b945c762a625",
+      "user_id": "d2bf66bf-5179-46af-82e9-2d4822193484",
       "avatar_url": null,
       "bio": "",
       "address_city": "Seattle, WA",
       "address_province": "",
       "trust_score": 5,
       "completed_rentals_count": 1,
-      "id": "b4f041e4-b054-46f5-a204-c4de3296cf46",
-      "created_at": "2026-11-07T00:50:59.993Z",
-      "updated_at": "2026-11-07T00:51:00.361Z"
+      "id": "7e4ce7d1-48d6-44ba-9da1-719ec0c6dd6d",
+      "created_at": "2026-11-07T01:59:18.893Z",
+      "updated_at": "2026-11-07T01:59:19.280Z"
     },
     {
-      "user_id": "fc88fcf9-4568-4f82-ab1a-60702fa71a5c",
+      "user_id": "36f03123-b092-466c-a98b-c01db0982dd8",
       "avatar_url": null,
       "bio": "",
       "address_city": "Bellevue, WA",
       "address_province": "",
       "trust_score": 5,
       "completed_rentals_count": 1,
-      "id": "9eeebcef-f337-4110-ab52-7b3d8aed4e1c",
-      "created_at": "2026-11-07T00:51:00.098Z",
-      "updated_at": "2026-11-07T00:51:00.347Z"
+      "id": "89094284-9839-4b65-b766-0048d2edb001",
+      "created_at": "2026-11-07T01:59:18.986Z",
+      "updated_at": "2026-11-07T01:59:19.266Z"
     },
     {
-      "user_id": "b1aa7399-d0ca-40b2-a1e4-373c4a93d1a0",
+      "user_id": "22ad3906-c8bf-464c-8ca1-51e0d4cf1f5b",
       "avatar_url": null,
       "bio": "",
       "address_city": "",
       "address_province": "",
       "trust_score": 5,
       "completed_rentals_count": 0,
-      "id": "d7c58306-4edc-485e-961c-96dc6cd6c318",
-      "created_at": "2026-11-07T00:51:00.199Z",
-      "updated_at": "2026-11-07T00:51:00.199Z"
+      "id": "2b9e10ef-08e7-463d-8a36-1af318040ce7",
+      "created_at": "2026-11-07T01:59:19.082Z",
+      "updated_at": "2026-11-07T01:59:19.082Z"
     }
   ],
   "identity_verifications": [],
@@ -103,9 +103,8 @@
       "description": "Drills, saws, sanders, generators, and woodworking equipment.",
       "icon_name": "Wrench",
       "is_active": true,
-      "id": "8d40fadd-e75a-450d-8dda-eb84e47cead5",
-      "created_at": "2026-11-07T00:50:59.711Z",
-      "updated_at": "2026-11-07T00:50:59.711Z"
+      "id": "21226916-57c8-48cc-8bd8-f5e32963bd02",
+      "created_at": "2026-11-07T01:59:18.577Z"
     },
     {
       "name": "Cameras & Photography",
@@ -113,9 +112,8 @@
       "description": "Mirrorless cameras, prime lenses, gimbals, lighting rigs, and drone gear.",
       "icon_name": "Camera",
       "is_active": true,
-      "id": "97691741-87a2-42d3-a744-fea8f560379b",
-      "created_at": "2026-11-07T00:50:59.713Z",
-      "updated_at": "2026-11-07T00:50:59.713Z"
+      "id": "17d524aa-3d3a-437f-9a25-17d46524abc7",
+      "created_at": "2026-11-07T01:59:18.578Z"
     },
     {
       "name": "Outdoor & Camping",
@@ -123,9 +121,8 @@
       "description": "Four-season tents, sleeping systems, stoves, kayaks, and backpacks.",
       "icon_name": "Compass",
       "is_active": true,
-      "id": "98aa0b94-43cd-42c4-a5d8-da57a2479c46",
-      "created_at": "2026-11-07T00:50:59.714Z",
-      "updated_at": "2026-11-07T00:50:59.714Z"
+      "id": "254faa36-7d5e-48bc-89e3-cd377caaffa0",
+      "created_at": "2026-11-07T01:59:18.579Z"
     },
     {
       "name": "Audio & Visual Electronics",
@@ -133,9 +130,8 @@
       "description": "PA speakers, high-lumen projectors, microphones, and audio mixers.",
       "icon_name": "Speaker",
       "is_active": true,
-      "id": "643e59ac-70d8-445f-ac69-f628e70a572b",
-      "created_at": "2026-11-07T00:50:59.715Z",
-      "updated_at": "2026-11-07T00:50:59.715Z"
+      "id": "f0228ef7-4574-4260-a41d-fb043c5cb304",
+      "created_at": "2026-11-07T01:59:18.580Z"
     },
     {
       "name": "Party & Event Supplies",
@@ -143,15 +139,14 @@
       "description": "Canopies, folding tables, chairs, lighting, and event sound systems.",
       "icon_name": "Sparkles",
       "is_active": true,
-      "id": "b211c7a4-d878-4c91-8413-bbbead69e72f",
-      "created_at": "2026-11-07T00:50:59.716Z",
-      "updated_at": "2026-11-07T00:50:59.716Z"
+      "id": "841752a2-0465-478d-896c-55e6141800a1",
+      "created_at": "2026-11-07T01:59:18.581Z"
     }
   ],
   "items": [
     {
-      "owner_id": "f334dbc5-3ea8-4ea1-87bd-b945c762a625",
-      "category_id": "643e59ac-70d8-445f-ac69-f628e70a572b",
+      "owner_id": "d2bf66bf-5179-46af-82e9-2d4822193484",
+      "category_id": "f0228ef7-4574-4260-a41d-fb043c5cb304",
       "title": "BOSCH Laser Measure 165ft with Bluetooth",
       "description": "High-precision real-time laser measurement tool with backlit color display.",
       "condition": "like_new",
@@ -163,152 +158,143 @@
       "rental_rules": "",
       "status": "active",
       "is_available": true,
-      "id": "67d4d64f-6b97-4809-a77d-17042fcbb2c4",
-      "created_at": "2026-11-07T00:51:00.233Z",
-      "updated_at": "2026-11-07T00:51:00.233Z"
+      "id": "f0143c48-6381-48bc-aa20-eed177613da4",
+      "created_at": "2026-11-07T01:59:19.116Z",
+      "updated_at": "2026-11-07T01:59:19.116Z"
     }
   ],
   "item_images": [
     {
-      "item_id": "67d4d64f-6b97-4809-a77d-17042fcbb2c4",
+      "item_id": "f0143c48-6381-48bc-aa20-eed177613da4",
       "image_url": "https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=600&q=80",
       "is_primary": true,
       "sort_order": 0,
-      "id": "31b1b735-4e05-444b-9db3-4ca6b8b70d3c",
-      "created_at": "2026-11-07T00:51:00.234Z",
-      "updated_at": "2026-11-07T00:51:00.234Z"
+      "id": "9eeb4088-7e7f-4cd5-b057-8060ca4fab63",
+      "created_at": "2026-11-07T01:59:19.117Z"
     }
   ],
   "rental_requests": [
     {
-      "item_id": "67d4d64f-6b97-4809-a77d-17042fcbb2c4",
-      "renter_id": "fc88fcf9-4568-4f82-ab1a-60702fa71a5c",
-      "owner_id": "f334dbc5-3ea8-4ea1-87bd-b945c762a625",
+      "item_id": "f0143c48-6381-48bc-aa20-eed177613da4",
+      "renter_id": "36f03123-b092-466c-a98b-c01db0982dd8",
+      "owner_id": "d2bf66bf-5179-46af-82e9-2d4822193484",
       "start_date": "2026-11-08",
       "end_date": "2026-11-11",
       "calculated_price": 2000,
       "security_deposit": 1000,
       "rental_purpose": "Framing out interior basement partition walls.",
       "status": "approved",
-      "id": "fec04060-6465-4ccf-9374-a8b5d4df68b7",
-      "created_at": "2026-11-07T00:51:00.252Z",
-      "updated_at": "2026-11-07T00:51:00.262Z"
+      "id": "2b9f4d1d-b79e-46a0-893b-1e827e99e4b2",
+      "created_at": "2026-11-07T01:59:19.151Z",
+      "updated_at": "2026-11-07T01:59:19.166Z"
     }
   ],
   "rentals": [
     {
-      "request_id": "fec04060-6465-4ccf-9374-a8b5d4df68b7",
-      "item_id": "67d4d64f-6b97-4809-a77d-17042fcbb2c4",
-      "renter_id": "fc88fcf9-4568-4f82-ab1a-60702fa71a5c",
-      "owner_id": "f334dbc5-3ea8-4ea1-87bd-b945c762a625",
+      "request_id": "2b9f4d1d-b79e-46a0-893b-1e827e99e4b2",
+      "item_id": "f0143c48-6381-48bc-aa20-eed177613da4",
+      "renter_id": "36f03123-b092-466c-a98b-c01db0982dd8",
+      "owner_id": "d2bf66bf-5179-46af-82e9-2d4822193484",
       "start_date": "2026-11-08",
       "end_date": "2026-11-11",
       "total_amount": 2000,
       "security_deposit": 1000,
       "status": "completed",
-      "id": "a74d258c-c98b-404f-b5e6-9e14a1b5a4af",
-      "created_at": "2026-11-07T00:51:00.263Z",
-      "updated_at": "2026-11-07T00:51:00.345Z",
-      "handover_date": "2026-11-07T00:51:00.314Z",
-      "returned_date": "2026-11-07T00:51:00.344Z"
+      "id": "15700fdc-2475-44ff-a142-754fdd8089ad",
+      "created_at": "2026-11-07T01:59:19.169Z",
+      "updated_at": "2026-11-07T01:59:19.265Z",
+      "handover_date": "2026-11-07T01:59:19.235Z",
+      "returned_date": "2026-11-07T01:59:19.264Z"
     }
   ],
   "rental_condition_reports": [
     {
-      "rental_id": "a74d258c-c98b-404f-b5e6-9e14a1b5a4af",
-      "reported_by": "f334dbc5-3ea8-4ea1-87bd-b945c762a625",
+      "rental_id": "15700fdc-2475-44ff-a142-754fdd8089ad",
+      "reported_by": "d2bf66bf-5179-46af-82e9-2d4822193484",
       "stage": "pre_rental",
       "item_condition": "like_new",
       "condition_notes": "Lens optic is crystal clear. Fresh AAA batteries loaded. Protective pouch included.",
       "damages_noted": "None.",
       "verified_by_counterpart": true,
-      "id": "db5f3f60-3677-4a98-8c5d-230dde02b79e",
-      "created_at": "2026-11-07T00:51:00.293Z",
-      "updated_at": "2026-11-07T00:51:00.303Z"
+      "id": "4c6db7c3-64b0-43bb-88df-ac7606c083ee",
+      "updated_at": "2026-11-07T01:59:19.219Z"
     },
     {
-      "rental_id": "a74d258c-c98b-404f-b5e6-9e14a1b5a4af",
-      "reported_by": "f334dbc5-3ea8-4ea1-87bd-b945c762a625",
+      "rental_id": "15700fdc-2475-44ff-a142-754fdd8089ad",
+      "reported_by": "d2bf66bf-5179-46af-82e9-2d4822193484",
       "stage": "post_rental",
       "item_condition": "like_new",
       "condition_notes": "Returned in clean state, operational test passed.",
       "damages_noted": "None.",
       "verified_by_counterpart": false,
-      "id": "69ab8520-383d-4bd9-8810-65eb471cfb94",
-      "created_at": "2026-11-07T00:51:00.330Z",
-      "updated_at": "2026-11-07T00:51:00.330Z"
+      "id": "ea99883d-4133-4dc4-b0d4-e14b85f2bff5"
     }
   ],
   "rental_condition_images": [
     {
-      "report_id": "db5f3f60-3677-4a98-8c5d-230dde02b79e",
+      "report_id": "4c6db7c3-64b0-43bb-88df-ac7606c083ee",
       "image_url": "https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=400&q=80",
       "caption": "Pre-Rental inspection photo",
-      "id": "40aa621b-f031-44aa-bac7-ae313907d353",
-      "created_at": "2026-11-07T00:51:00.294Z",
-      "updated_at": "2026-11-07T00:51:00.294Z"
+      "id": "4b145e50-13cc-4906-bad8-47746166ca4a"
     },
     {
-      "report_id": "69ab8520-383d-4bd9-8810-65eb471cfb94",
+      "report_id": "ea99883d-4133-4dc4-b0d4-e14b85f2bff5",
       "image_url": "https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=400&q=80",
       "caption": "Post-Rental inspection photo",
-      "id": "9d5f2d3b-69f6-414a-9f2b-3cbe3cad8b18",
-      "created_at": "2026-11-07T00:51:00.331Z",
-      "updated_at": "2026-11-07T00:51:00.331Z"
+      "id": "be34cdb0-4675-4f3a-9540-a001be100fd6"
     }
   ],
   "handover_confirmations": [
     {
-      "rental_id": "a74d258c-c98b-404f-b5e6-9e14a1b5a4af",
+      "rental_id": "15700fdc-2475-44ff-a142-754fdd8089ad",
       "stage": "handover",
       "owner_confirmed": true,
       "renter_confirmed": false,
-      "handover_code": "RL-4381",
-      "id": "47d27760-9670-4b35-b2ed-51b5d3c1ce4b",
-      "created_at": "2026-11-07T00:51:00.265Z",
-      "updated_at": "2026-11-07T00:51:00.314Z",
-      "owner_confirmed_at": "2026-11-07T00:51:00.314Z"
+      "handover_code": "RL-1924",
+      "id": "44bfcade-dd87-4c07-a803-f1c05ec7cee6",
+      "created_at": "2026-11-07T01:59:19.171Z",
+      "owner_confirmed_at": "2026-11-07T01:59:19.235Z",
+      "updated_at": "2026-11-07T01:59:19.235Z"
     },
     {
-      "rental_id": "a74d258c-c98b-404f-b5e6-9e14a1b5a4af",
+      "rental_id": "15700fdc-2475-44ff-a142-754fdd8089ad",
       "stage": "return",
       "owner_confirmed": true,
       "renter_confirmed": false,
-      "handover_code": "RL-1254",
-      "id": "66ae9916-e62e-4588-8c0d-480c302dd20e",
-      "created_at": "2026-11-07T00:51:00.318Z",
-      "updated_at": "2026-11-07T00:51:00.344Z",
-      "owner_confirmed_at": "2026-11-07T00:51:00.344Z"
+      "handover_code": "RL-9427",
+      "id": "ae2fa1fa-bec7-418f-9ba4-c8a28d016803",
+      "created_at": "2026-11-07T01:59:19.238Z",
+      "owner_confirmed_at": "2026-11-07T01:59:19.264Z",
+      "updated_at": "2026-11-07T01:59:19.264Z"
     }
   ],
   "reviews": [
     {
-      "rental_id": "a74d258c-c98b-404f-b5e6-9e14a1b5a4af",
-      "reviewer_id": "fc88fcf9-4568-4f82-ab1a-60702fa71a5c",
-      "reviewee_id": "f334dbc5-3ea8-4ea1-87bd-b945c762a625",
+      "rental_id": "15700fdc-2475-44ff-a142-754fdd8089ad",
+      "reviewer_id": "36f03123-b092-466c-a98b-c01db0982dd8",
+      "reviewee_id": "d2bf66bf-5179-46af-82e9-2d4822193484",
       "rating": 5,
       "comment": "Laser was calibrated perfectly and John gave great usage advice.",
-      "id": "56cb9ec8-6096-4555-9909-f378d4714e48",
-      "created_at": "2026-11-07T00:51:00.359Z",
-      "updated_at": "2026-11-07T00:51:00.359Z"
+      "id": "176c9a0a-b5be-4811-88b8-e464d1cf37d4",
+      "created_at": "2026-11-07T01:59:19.278Z"
     }
   ],
   "reports": [
     {
-      "reporter_id": "fc88fcf9-4568-4f82-ab1a-60702fa71a5c",
-      "reported_user_id": "f334dbc5-3ea8-4ea1-87bd-b945c762a625",
+      "reporter_id": "36f03123-b092-466c-a98b-c01db0982dd8",
+      "reported_user_id": "d2bf66bf-5179-46af-82e9-2d4822193484",
       "reported_item_id": null,
-      "rental_id": "a74d258c-c98b-404f-b5e6-9e14a1b5a4af",
+      "rental_id": "15700fdc-2475-44ff-a142-754fdd8089ad",
       "report_type": "damaged_item",
       "description": "Test dispute investigation filing.",
       "evidence_urls": null,
       "status": "resolved",
-      "id": "80ec989b-1c75-4504-a3b7-08c0dfe1a2b7",
-      "created_at": "2026-11-07T00:51:00.375Z",
-      "updated_at": "2026-11-07T00:51:00.397Z",
+      "id": "134a1064-2840-4fc0-a171-cb148858aa63",
+      "created_at": "2026-11-07T01:59:19.290Z",
+      "updated_at": "2026-11-07T01:59:19.332Z",
       "admin_notes": "Investigated and resolved in good standing.",
       "resolved_by": "11111111-1111-1111-1111-111111111111",
-      "resolved_at": "2026-11-07T00:51:00.397Z"
+      "resolved_at": "2026-11-07T01:59:19.332Z"
     }
   ],
   "notifications": [
@@ -319,119 +305,108 @@
       "type": "system",
       "link_url": "/admin/dashboard",
       "is_read": false,
-      "id": "6be49975-3eda-4905-95e8-3d41818e6fcd",
-      "created_at": "2026-11-07T00:50:59.717Z",
-      "updated_at": "2026-11-07T00:50:59.717Z"
+      "id": "68c8b80d-f800-4bad-9896-d2c63a4cfee4",
+      "created_at": "2026-11-07T01:59:18.583Z"
     },
     {
-      "user_id": "f334dbc5-3ea8-4ea1-87bd-b945c762a625",
+      "user_id": "d2bf66bf-5179-46af-82e9-2d4822193484",
       "title": "Welcome to RentLoop!",
       "message": "Get started by browsing available items or submitting your identity verification to start listing and renting.",
       "type": "system",
       "link_url": "/profile",
       "is_read": false,
-      "id": "da7a95b7-7dc4-4e70-9176-009566b62592",
-      "created_at": "2026-11-07T00:50:59.996Z",
-      "updated_at": "2026-11-07T00:50:59.996Z"
+      "id": "537c1bb7-1b66-41bf-881d-40beb651dbd1",
+      "created_at": "2026-11-07T01:59:18.895Z"
     },
     {
-      "user_id": "fc88fcf9-4568-4f82-ab1a-60702fa71a5c",
+      "user_id": "36f03123-b092-466c-a98b-c01db0982dd8",
       "title": "Welcome to RentLoop!",
       "message": "Get started by browsing available items or submitting your identity verification to start listing and renting.",
       "type": "system",
       "link_url": "/profile",
       "is_read": false,
-      "id": "293f7532-b71b-4d8b-9160-8ba4ad9369ee",
-      "created_at": "2026-11-07T00:51:00.099Z",
-      "updated_at": "2026-11-07T00:51:00.099Z"
+      "id": "1825e0ed-bb70-469f-90d1-9500ee8686ea",
+      "created_at": "2026-11-07T01:59:18.988Z"
     },
     {
-      "user_id": "b1aa7399-d0ca-40b2-a1e4-373c4a93d1a0",
+      "user_id": "22ad3906-c8bf-464c-8ca1-51e0d4cf1f5b",
       "title": "Welcome to RentLoop!",
       "message": "Get started by browsing available items or submitting your identity verification to start listing and renting.",
       "type": "system",
       "link_url": "/profile",
       "is_read": false,
-      "id": "6ead7c37-494e-48d8-998d-7be626109462",
-      "created_at": "2026-11-07T00:51:00.201Z",
-      "updated_at": "2026-11-07T00:51:00.201Z"
+      "id": "4bf456f1-79ba-4ce0-9536-b8a5c200536b",
+      "created_at": "2026-11-07T01:59:19.085Z"
     },
     {
-      "user_id": "f334dbc5-3ea8-4ea1-87bd-b945c762a625",
+      "user_id": "d2bf66bf-5179-46af-82e9-2d4822193484",
       "title": "New Rental Request Received",
       "message": "Test Item Renter requested to rent \"BOSCH Laser Measure 165ft with Bluetooth\" from 2026-11-08 to 2026-11-11.",
       "type": "rental_request",
       "link_url": "/owner/requests",
       "is_read": false,
-      "id": "0472285c-0d19-452e-8f29-e159a6bc86ae",
-      "created_at": "2026-11-07T00:51:00.254Z",
-      "updated_at": "2026-11-07T00:51:00.254Z"
+      "id": "fe755805-dc5b-4fa4-ac2f-e8a5df25d796",
+      "created_at": "2026-11-07T01:59:19.152Z"
     },
     {
-      "user_id": "fc88fcf9-4568-4f82-ab1a-60702fa71a5c",
+      "user_id": "36f03123-b092-466c-a98b-c01db0982dd8",
       "title": "Rental Request Approved!",
-      "message": "Your rental request for \"BOSCH Laser Measure 165ft with Bluetooth\" has been approved! Ready for pickup from 2026-11-08. Handover Code: RL-4381",
+      "message": "Your rental request for \"BOSCH Laser Measure 165ft with Bluetooth\" has been approved! Ready for pickup from 2026-11-08. Handover Code: RL-1924",
       "type": "approval",
-      "link_url": "/rentals/a74d258c-c98b-404f-b5e6-9e14a1b5a4af",
+      "link_url": "/rentals/15700fdc-2475-44ff-a142-754fdd8089ad",
       "is_read": false,
-      "id": "d5b486e0-a29d-4462-9f0a-4800f84e575f",
-      "created_at": "2026-11-07T00:51:00.266Z",
-      "updated_at": "2026-11-07T00:51:00.266Z"
+      "id": "f2c97a63-9882-4bb8-9ac5-a28d6c27a778",
+      "created_at": "2026-11-07T01:59:19.172Z"
     },
     {
-      "user_id": "fc88fcf9-4568-4f82-ab1a-60702fa71a5c",
+      "user_id": "36f03123-b092-466c-a98b-c01db0982dd8",
       "title": "Pre-Rental Condition Documented",
       "message": "Test Item Owner uploaded a condition report with photos for your rental. Please review and sign off.",
       "type": "condition_report",
-      "link_url": "/rentals/a74d258c-c98b-404f-b5e6-9e14a1b5a4af",
+      "link_url": "/rentals/15700fdc-2475-44ff-a142-754fdd8089ad",
       "is_read": false,
-      "id": "2e85c5b7-e6cd-4c02-b204-521c3d208909",
-      "created_at": "2026-11-07T00:51:00.296Z",
-      "updated_at": "2026-11-07T00:51:00.296Z"
+      "id": "b03219d4-6b26-45e3-8e52-96a345730797",
+      "created_at": "2026-11-07T01:59:19.207Z"
     },
     {
-      "user_id": "fc88fcf9-4568-4f82-ab1a-60702fa71a5c",
+      "user_id": "36f03123-b092-466c-a98b-c01db0982dd8",
       "title": "Post-Rental Condition Documented",
       "message": "Test Item Owner uploaded a condition report with photos for your rental. Please review and sign off.",
       "type": "condition_report",
-      "link_url": "/rentals/a74d258c-c98b-404f-b5e6-9e14a1b5a4af",
+      "link_url": "/rentals/15700fdc-2475-44ff-a142-754fdd8089ad",
       "is_read": false,
-      "id": "f155fe1d-490e-4641-b041-e0f493726d59",
-      "created_at": "2026-11-07T00:51:00.333Z",
-      "updated_at": "2026-11-07T00:51:00.333Z"
+      "id": "2b4fd878-694f-40de-b655-d0ca6a3440c3",
+      "created_at": "2026-11-07T01:59:19.247Z"
     },
     {
-      "user_id": "fc88fcf9-4568-4f82-ab1a-60702fa71a5c",
+      "user_id": "36f03123-b092-466c-a98b-c01db0982dd8",
       "title": "Rental Completed! Leave a Review",
       "message": "Your item return was confirmed. Please leave a review for the item owner.",
       "type": "review",
-      "link_url": "/rentals/a74d258c-c98b-404f-b5e6-9e14a1b5a4af",
+      "link_url": "/rentals/15700fdc-2475-44ff-a142-754fdd8089ad",
       "is_read": false,
-      "id": "ac46b813-f45c-4d1e-a59a-7d12b21ce517",
-      "created_at": "2026-11-07T00:51:00.350Z",
-      "updated_at": "2026-11-07T00:51:00.350Z"
+      "id": "9eb62644-985f-451d-80f2-a9ccb8823ae7",
+      "created_at": "2026-11-07T01:59:19.270Z"
     },
     {
-      "user_id": "f334dbc5-3ea8-4ea1-87bd-b945c762a625",
+      "user_id": "d2bf66bf-5179-46af-82e9-2d4822193484",
       "title": "Rental Completed! Leave a Review",
       "message": "The item was successfully returned. Please leave a review for the renter.",
       "type": "review",
-      "link_url": "/rentals/a74d258c-c98b-404f-b5e6-9e14a1b5a4af",
+      "link_url": "/rentals/15700fdc-2475-44ff-a142-754fdd8089ad",
       "is_read": false,
-      "id": "8f8e9afd-645a-43cd-b9fb-9d42e9ff6277",
-      "created_at": "2026-11-07T00:51:00.353Z",
-      "updated_at": "2026-11-07T00:51:00.353Z"
+      "id": "ce523c31-b663-418b-8faf-23faedc0dae7",
+      "created_at": "2026-11-07T01:59:19.271Z"
     },
     {
-      "user_id": "f334dbc5-3ea8-4ea1-87bd-b945c762a625",
+      "user_id": "d2bf66bf-5179-46af-82e9-2d4822193484",
       "title": "New Review Received",
       "message": "Test Item Renter left you a 5-star review for completed rental!",
       "type": "review_received",
-      "link_url": "/users/f334dbc5-3ea8-4ea1-87bd-b945c762a625",
+      "link_url": "/users/d2bf66bf-5179-46af-82e9-2d4822193484",
       "is_read": false,
-      "id": "7629c69b-d412-4e81-92c7-c21d7c9ac113",
-      "created_at": "2026-11-07T00:51:00.363Z",
-      "updated_at": "2026-11-07T00:51:00.363Z"
+      "id": "a76100da-deb3-44ae-ad1b-493d7776f6af",
+      "created_at": "2026-11-07T01:59:19.282Z"
     },
     {
       "user_id": "11111111-1111-1111-1111-111111111111",
@@ -440,20 +415,18 @@
       "type": "report_created",
       "link_url": "/admin/reports",
       "is_read": false,
-      "id": "14c5e88e-9f49-49f3-a487-347ca792f62d",
-      "created_at": "2026-11-07T00:51:00.376Z",
-      "updated_at": "2026-11-07T00:51:00.376Z"
+      "id": "e83c678f-88cc-4b4d-955f-f5d1ad7be53b",
+      "created_at": "2026-11-07T01:59:19.292Z"
     },
     {
-      "user_id": "fc88fcf9-4568-4f82-ab1a-60702fa71a5c",
+      "user_id": "36f03123-b092-466c-a98b-c01db0982dd8",
       "title": "Report Status Update",
       "message": "Your report has been marked as resolved. Note: Investigated and resolved in good standing.",
       "type": "report_updated",
       "link_url": "/profile",
       "is_read": false,
-      "id": "a3c3dd44-ef10-47ac-88d7-a44046b2ae99",
-      "created_at": "2026-11-07T00:51:00.399Z",
-      "updated_at": "2026-11-07T00:51:00.399Z"
+      "id": "a1ad7b48-efe3-4e5f-bf72-6b66d9fb6eb9",
+      "created_at": "2026-11-07T01:59:19.333Z"
     }
   ],
   "audit_logs": [
@@ -464,9 +437,8 @@
       "target_id": "GLOBAL",
       "details_json": "{\"event\":\"RentLoop initialized cleanly with admin account and system categories only\"}",
       "ip_address": "127.0.0.1",
-      "id": "ba29e641-bfbc-49c3-bcba-4413dcd1072d",
-      "created_at": "2026-11-07T00:50:59.718Z",
-      "updated_at": "2026-11-07T00:50:59.718Z"
+      "id": "4b3457f8-a42f-4a32-b286-23cc9fb47b38",
+      "created_at": "2026-11-07T01:59:18.585Z"
     },
     {
       "actor_id": "11111111-1111-1111-1111-111111111111",
@@ -475,152 +447,138 @@
       "target_id": "11111111-1111-1111-1111-111111111111",
       "details_json": "{\"email\":\"admin@rentloop.com\"}",
       "ip_address": "::1",
-      "id": "920429e5-dc8a-4e93-9cc2-d97e462abc5f",
-      "created_at": "2026-11-07T00:50:59.889Z",
-      "updated_at": "2026-11-07T00:50:59.889Z"
+      "id": "ddf82799-dae5-40bc-8fb6-1d02a706bebe",
+      "created_at": "2026-11-07T01:59:18.778Z"
     },
     {
-      "actor_id": "f334dbc5-3ea8-4ea1-87bd-b945c762a625",
+      "actor_id": "d2bf66bf-5179-46af-82e9-2d4822193484",
       "action": "USER_REGISTERED",
       "target_entity": "USERS",
-      "target_id": "f334dbc5-3ea8-4ea1-87bd-b945c762a625",
-      "details_json": "{\"email\":\"owner.1794012659904@rentloop.com\",\"fullName\":\"Test Item Owner\"}",
+      "target_id": "d2bf66bf-5179-46af-82e9-2d4822193484",
+      "details_json": "{\"email\":\"owner.1794016758793@rentloop.com\",\"fullName\":\"Test Item Owner\"}",
       "ip_address": "::1",
-      "id": "433313be-e21e-4964-bbf5-89511e6d1b78",
-      "created_at": "2026-11-07T00:50:59.997Z",
-      "updated_at": "2026-11-07T00:50:59.997Z"
+      "id": "1fa00b94-fd95-4c65-b95b-8c411df73fde",
+      "created_at": "2026-11-07T01:59:18.896Z"
     },
     {
-      "actor_id": "fc88fcf9-4568-4f82-ab1a-60702fa71a5c",
+      "actor_id": "36f03123-b092-466c-a98b-c01db0982dd8",
       "action": "USER_REGISTERED",
       "target_entity": "USERS",
-      "target_id": "fc88fcf9-4568-4f82-ab1a-60702fa71a5c",
-      "details_json": "{\"email\":\"renter.1794012660002@rentloop.com\",\"fullName\":\"Test Item Renter\"}",
+      "target_id": "36f03123-b092-466c-a98b-c01db0982dd8",
+      "details_json": "{\"email\":\"renter.1794016758900@rentloop.com\",\"fullName\":\"Test Item Renter\"}",
       "ip_address": "::1",
-      "id": "fd38497f-582b-4c1c-b35f-36c7d4dfc495",
-      "created_at": "2026-11-07T00:51:00.100Z",
-      "updated_at": "2026-11-07T00:51:00.100Z"
+      "id": "5eba4c1c-a1cf-49be-9afc-2305ee21fdd4",
+      "created_at": "2026-11-07T01:59:18.990Z"
     },
     {
-      "actor_id": "b1aa7399-d0ca-40b2-a1e4-373c4a93d1a0",
+      "actor_id": "22ad3906-c8bf-464c-8ca1-51e0d4cf1f5b",
       "action": "USER_REGISTERED",
       "target_entity": "USERS",
-      "target_id": "b1aa7399-d0ca-40b2-a1e4-373c4a93d1a0",
-      "details_json": "{\"email\":\"newuser.1794012660103@rentloop.com\",\"fullName\":\"New Test User\"}",
+      "target_id": "22ad3906-c8bf-464c-8ca1-51e0d4cf1f5b",
+      "details_json": "{\"email\":\"newuser.1794016758993@rentloop.com\",\"fullName\":\"New Test User\"}",
       "ip_address": "::1",
-      "id": "6e1553f2-5ed1-4cdd-8c8e-9657923b7da3",
-      "created_at": "2026-11-07T00:51:00.202Z",
-      "updated_at": "2026-11-07T00:51:00.202Z"
+      "id": "79cfe28d-e590-4856-9cbf-58ba6f6d1b00",
+      "created_at": "2026-11-07T01:59:19.086Z"
     },
     {
-      "actor_id": "f334dbc5-3ea8-4ea1-87bd-b945c762a625",
+      "actor_id": "d2bf66bf-5179-46af-82e9-2d4822193484",
       "action": "ITEM_CREATED",
       "target_entity": "ITEMS",
-      "target_id": "67d4d64f-6b97-4809-a77d-17042fcbb2c4",
+      "target_id": "f0143c48-6381-48bc-aa20-eed177613da4",
       "details_json": "{\"title\":\"BOSCH Laser Measure 165ft with Bluetooth\",\"price\":500}",
       "ip_address": "127.0.0.1",
-      "id": "7777f64f-e2f2-4ca5-9d46-d0cf4df97b32",
-      "created_at": "2026-11-07T00:51:00.235Z",
-      "updated_at": "2026-11-07T00:51:00.235Z"
+      "id": "1997627f-9d3f-48fa-90c6-e97926d133ab",
+      "created_at": "2026-11-07T01:59:19.119Z"
     },
     {
-      "actor_id": "fc88fcf9-4568-4f82-ab1a-60702fa71a5c",
+      "actor_id": "36f03123-b092-466c-a98b-c01db0982dd8",
       "action": "RENTAL_REQUEST_CREATED",
       "target_entity": "RENTAL_REQUESTS",
-      "target_id": "fec04060-6465-4ccf-9374-a8b5d4df68b7",
-      "details_json": "{\"itemId\":\"67d4d64f-6b97-4809-a77d-17042fcbb2c4\",\"startDate\":\"2026-11-08\",\"endDate\":\"2026-11-11\",\"calculatedPrice\":2000}",
+      "target_id": "2b9f4d1d-b79e-46a0-893b-1e827e99e4b2",
+      "details_json": "{\"itemId\":\"f0143c48-6381-48bc-aa20-eed177613da4\",\"startDate\":\"2026-11-08\",\"endDate\":\"2026-11-11\",\"calculatedPrice\":2000}",
       "ip_address": "127.0.0.1",
-      "id": "238a6b49-7fc1-4aae-9b34-e7dd53a6790d",
-      "created_at": "2026-11-07T00:51:00.255Z",
-      "updated_at": "2026-11-07T00:51:00.255Z"
+      "id": "34753edb-34f3-4566-996c-99519a565c7c",
+      "created_at": "2026-11-07T01:59:19.154Z"
     },
     {
-      "actor_id": "f334dbc5-3ea8-4ea1-87bd-b945c762a625",
+      "actor_id": "d2bf66bf-5179-46af-82e9-2d4822193484",
       "action": "RENTAL_REQUEST_APPROVED",
       "target_entity": "RENTAL_REQUESTS",
-      "target_id": "fec04060-6465-4ccf-9374-a8b5d4df68b7",
-      "details_json": "{\"rentalId\":\"a74d258c-c98b-404f-b5e6-9e14a1b5a4af\",\"handoverCode\":\"RL-4381\"}",
+      "target_id": "2b9f4d1d-b79e-46a0-893b-1e827e99e4b2",
+      "details_json": "{\"rentalId\":\"15700fdc-2475-44ff-a142-754fdd8089ad\",\"handoverCode\":\"RL-1924\"}",
       "ip_address": "127.0.0.1",
-      "id": "96622ade-a45b-43b7-8053-e633e19475f0",
-      "created_at": "2026-11-07T00:51:00.268Z",
-      "updated_at": "2026-11-07T00:51:00.268Z"
+      "id": "7766e55b-2d40-42cd-a522-04da84f055ca",
+      "created_at": "2026-11-07T01:59:19.174Z"
     },
     {
-      "actor_id": "f334dbc5-3ea8-4ea1-87bd-b945c762a625",
+      "actor_id": "d2bf66bf-5179-46af-82e9-2d4822193484",
       "action": "CONDITION_REPORT_SUBMITTED",
       "target_entity": "RENTAL_CONDITION_REPORTS",
-      "target_id": "db5f3f60-3677-4a98-8c5d-230dde02b79e",
-      "details_json": "{\"rentalId\":\"a74d258c-c98b-404f-b5e6-9e14a1b5a4af\",\"stage\":\"pre_rental\",\"itemCondition\":\"like_new\"}",
+      "target_id": "4c6db7c3-64b0-43bb-88df-ac7606c083ee",
+      "details_json": "{\"rentalId\":\"15700fdc-2475-44ff-a142-754fdd8089ad\",\"stage\":\"pre_rental\",\"itemCondition\":\"like_new\"}",
       "ip_address": "127.0.0.1",
-      "id": "81bd6366-8a11-4480-bdd9-54a6bc29c262",
-      "created_at": "2026-11-07T00:51:00.297Z",
-      "updated_at": "2026-11-07T00:51:00.297Z"
+      "id": "618f950c-a980-4c04-97b7-3fbfc4ab140b",
+      "created_at": "2026-11-07T01:59:19.208Z"
     },
     {
-      "actor_id": "fc88fcf9-4568-4f82-ab1a-60702fa71a5c",
+      "actor_id": "36f03123-b092-466c-a98b-c01db0982dd8",
       "action": "CONDITION_REPORT_VERIFIED",
       "target_entity": "RENTAL_CONDITION_REPORTS",
-      "target_id": "db5f3f60-3677-4a98-8c5d-230dde02b79e",
+      "target_id": "4c6db7c3-64b0-43bb-88df-ac7606c083ee",
       "details_json": "{}",
       "ip_address": "127.0.0.1",
-      "id": "da106aaf-c3b2-471a-b421-97fa86f8f006",
-      "created_at": "2026-11-07T00:51:00.305Z",
-      "updated_at": "2026-11-07T00:51:00.305Z"
+      "id": "5ba2dced-021f-4dcb-831a-469edf2704be",
+      "created_at": "2026-11-07T01:59:19.220Z"
     },
     {
-      "actor_id": "f334dbc5-3ea8-4ea1-87bd-b945c762a625",
+      "actor_id": "d2bf66bf-5179-46af-82e9-2d4822193484",
       "action": "CONDITION_REPORT_SUBMITTED",
       "target_entity": "RENTAL_CONDITION_REPORTS",
-      "target_id": "69ab8520-383d-4bd9-8810-65eb471cfb94",
-      "details_json": "{\"rentalId\":\"a74d258c-c98b-404f-b5e6-9e14a1b5a4af\",\"stage\":\"post_rental\",\"itemCondition\":\"like_new\"}",
+      "target_id": "ea99883d-4133-4dc4-b0d4-e14b85f2bff5",
+      "details_json": "{\"rentalId\":\"15700fdc-2475-44ff-a142-754fdd8089ad\",\"stage\":\"post_rental\",\"itemCondition\":\"like_new\"}",
       "ip_address": "127.0.0.1",
-      "id": "e2dd044b-2d27-40c3-9cfc-f4ee14444f28",
-      "created_at": "2026-11-07T00:51:00.334Z",
-      "updated_at": "2026-11-07T00:51:00.334Z"
+      "id": "8c951238-7254-4176-b33b-bde9240479d5",
+      "created_at": "2026-11-07T01:59:19.249Z"
     },
     {
-      "actor_id": "f334dbc5-3ea8-4ea1-87bd-b945c762a625",
+      "actor_id": "d2bf66bf-5179-46af-82e9-2d4822193484",
       "action": "RENTAL_COMPLETED",
       "target_entity": "RENTALS",
-      "target_id": "a74d258c-c98b-404f-b5e6-9e14a1b5a4af",
+      "target_id": "15700fdc-2475-44ff-a142-754fdd8089ad",
       "details_json": "{}",
       "ip_address": "127.0.0.1",
-      "id": "b8fbf09b-0454-497b-a249-649bba9ff9c1",
-      "created_at": "2026-11-07T00:51:00.354Z",
-      "updated_at": "2026-11-07T00:51:00.354Z"
+      "id": "1c6e0d58-dfe3-4829-b177-e2d4cabea946",
+      "created_at": "2026-11-07T01:59:19.273Z"
     },
     {
-      "actor_id": "fc88fcf9-4568-4f82-ab1a-60702fa71a5c",
+      "actor_id": "36f03123-b092-466c-a98b-c01db0982dd8",
       "action": "REVIEW_SUBMITTED",
       "target_entity": "REVIEWS",
-      "target_id": "56cb9ec8-6096-4555-9909-f378d4714e48",
-      "details_json": "{\"rentalId\":\"a74d258c-c98b-404f-b5e6-9e14a1b5a4af\",\"revieweeId\":\"f334dbc5-3ea8-4ea1-87bd-b945c762a625\",\"rating\":5}",
+      "target_id": "176c9a0a-b5be-4811-88b8-e464d1cf37d4",
+      "details_json": "{\"rentalId\":\"15700fdc-2475-44ff-a142-754fdd8089ad\",\"revieweeId\":\"d2bf66bf-5179-46af-82e9-2d4822193484\",\"rating\":5}",
       "ip_address": "127.0.0.1",
-      "id": "af2fe672-1c87-45ab-8ab5-c37e44818331",
-      "created_at": "2026-11-07T00:51:00.364Z",
-      "updated_at": "2026-11-07T00:51:00.364Z"
+      "id": "8d39d3e8-ed80-44b1-b1a4-df2a7f5b3222",
+      "created_at": "2026-11-07T01:59:19.283Z"
     },
     {
-      "actor_id": "fc88fcf9-4568-4f82-ab1a-60702fa71a5c",
+      "actor_id": "36f03123-b092-466c-a98b-c01db0982dd8",
       "action": "REPORT_FILED",
       "target_entity": "REPORTS",
-      "target_id": "80ec989b-1c75-4504-a3b7-08c0dfe1a2b7",
-      "details_json": "{\"reportType\":\"damaged_item\",\"reportedUserId\":\"f334dbc5-3ea8-4ea1-87bd-b945c762a625\",\"rentalId\":\"a74d258c-c98b-404f-b5e6-9e14a1b5a4af\"}",
+      "target_id": "134a1064-2840-4fc0-a171-cb148858aa63",
+      "details_json": "{\"reportType\":\"damaged_item\",\"reportedUserId\":\"d2bf66bf-5179-46af-82e9-2d4822193484\",\"rentalId\":\"15700fdc-2475-44ff-a142-754fdd8089ad\"}",
       "ip_address": "127.0.0.1",
-      "id": "003bc272-032d-49fa-b674-8d807501705a",
-      "created_at": "2026-11-07T00:51:00.378Z",
-      "updated_at": "2026-11-07T00:51:00.378Z"
+      "id": "60863fb2-8937-4b60-a28e-b4854b8bf466",
+      "created_at": "2026-11-07T01:59:19.294Z"
     },
     {
       "actor_id": "11111111-1111-1111-1111-111111111111",
       "action": "REPORT_RESOLVED",
       "target_entity": "REPORTS",
-      "target_id": "80ec989b-1c75-4504-a3b7-08c0dfe1a2b7",
+      "target_id": "134a1064-2840-4fc0-a171-cb148858aa63",
       "details_json": "{\"status\":\"resolved\",\"adminNotes\":\"Investigated and resolved in good standing.\"}",
       "ip_address": "127.0.0.1",
-      "id": "52f304a7-e34c-4743-9f74-2a677738aa35",
-      "created_at": "2026-11-07T00:51:00.401Z",
-      "updated_at": "2026-11-07T00:51:00.401Z"
+      "id": "d74fdf3e-276b-420c-907f-5735e3f2cdc1",
+      "created_at": "2026-11-07T01:59:19.336Z"
     }
   ]
 }

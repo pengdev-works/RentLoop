@@ -21,13 +21,13 @@
 
 ## 🛠️ Technology Stack
 
-| Layer | Technologies |
-|---|---|
-| **Frontend** | React 18, Vite, Tailwind CSS, Lucide Icons, React Router 6 |
-| **Backend** | Node.js, Express.js REST API |
-| **Database** | PostgreSQL (`pg` pool) + Embedded relational fallback |
-| **Security & Auth** | JSON Web Tokens (JWT), bcrypt password hashing, Helmet, CORS, Multer upload filters, Rate limiting |
-| **Deployment Targets** | Frontend on Vercel, Backend on Render, Database on PostgreSQL (Neon / Supabase / Render Postgres) |
+| Layer                  | Technologies                                                                                       |
+| ---------------------- | -------------------------------------------------------------------------------------------------- |
+| **Frontend**           | React 18, Vite, Tailwind CSS, Lucide Icons, React Router 6                                         |
+| **Backend**            | Node.js, Express.js REST API                                                                       |
+| **Database**           | PostgreSQL (`pg` pool) + Embedded relational fallback                                              |
+| **Security & Auth**    | JSON Web Tokens (JWT), bcrypt password hashing, Helmet, CORS, Multer upload filters, Rate limiting |
+| **Deployment Targets** | Frontend on Vercel, Backend on Render, Database on PostgreSQL (Neon / Supabase / Render Postgres)  |
 
 ---
 
@@ -35,8 +35,8 @@
 
 The platform is initialized with a single pre-configured administrative account:
 
-| Role | Email Address | Password | Permissions & Highlights |
-|---|---|---|---|
+| Role                     | Email Address        | Password       | Permissions & Highlights                                                                            |
+| ------------------------ | -------------------- | -------------- | --------------------------------------------------------------------------------------------------- |
 | **System Administrator** | `admin@rentloop.com` | `Password123!` | Full control room: user moderation, identity document verification, dispute resolution, audit trail |
 
 > **Note:** To test the platform as an **Item Owner** or **Renter**, register new accounts via the public **Get Started / Register** page. Owners can submit identity verification in their profile and list items, while Renters can search, request rentals, acknowledge pre-rental inspections, and post reviews.
@@ -46,10 +46,12 @@ The platform is initialized with a single pre-configured administrative account:
 ## 🏁 Quickstart Guide
 
 ### 1. Prerequisites
+
 - [Node.js](https://nodejs.org/) (v18 or higher)
 - [npm](https://www.npmjs.com/)
 
 ### 2. Install Dependencies
+
 ```bash
 # Install root dependencies
 npm install
@@ -62,20 +64,25 @@ cd client && npm install && cd ..
 ```
 
 ### 3. Seed Database
+
 ```bash
 npm run seed
 ```
-*(Populates categories, demo users, verified IDs, item listings, active rentals, condition reports, and reviews).*
+
+_(Populates categories, demo users, verified IDs, item listings, active rentals, condition reports, and reviews)._
 
 ### 4. Run the Full-Stack Application
 
 You can run the full-stack server directly (serving both the Express API and compiled frontend):
+
 ```bash
 npm start
 ```
+
 Visit: **http://localhost:5000**
 
 Or run the client with Vite Hot-Module-Replacement for development:
+
 ```bash
 # Terminal 1: Backend API
 npm run server
@@ -83,6 +90,7 @@ npm run server
 # Terminal 2: Frontend Vite Dev Server
 npm run client
 ```
+
 Visit Vite Dev: **http://localhost:5173**
 
 ---
@@ -90,10 +98,13 @@ Visit Vite Dev: **http://localhost:5173**
 ## 🧪 Automated End-to-End Test Suite
 
 Run the comprehensive test suite verifying all 7 modules:
+
 ```bash
 npm test
 ```
+
 The test suite validates:
+
 1. **Module 1:** User registration, password hashing, JWT sessions, privilege escalation guards.
 2. **Module 2 & 3:** Category listing, item publishing, keyword search, price/condition filtering.
 3. **Module 4:** Rental request submission, owner approval, and **double-booking overlap rejection**.
@@ -146,4 +157,3 @@ RentLoop/
 - **Private Identity Verification:** Government ID numbers and identity document images are strictly excluded from public user endpoints and accessible only by administrators.
 - **SQL Parameterization:** Queries use parameterized arguments to eliminate SQL injection vulnerabilities.
 - **Audit Logging:** Administrative actions, dispute resolutions, and status modifications write tamper-evident entries to the `audit_logs` table.
-

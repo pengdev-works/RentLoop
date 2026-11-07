@@ -1,19 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import {
   ShieldCheck,
   ShieldAlert,
   User,
   Lock,
-  Upload,
   CheckCircle2,
   AlertCircle,
   FileCheck,
   Camera,
-  Star
+  Star,
+  Upload,
+  Loader2
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { api } from '../services/api';
 import { TrustBadge } from '../components/common/TrustBadge';
+import { FileUpload } from '../components/common/FileUpload';
+import { toastOk, toastErr, alertSuccess, alertError } from '../utils/swal';
 
 export function ProfilePage() {
   const { user, refreshUser } = useAuth();
@@ -34,14 +37,43 @@ export function ProfilePage() {
   const [bio, setBio] = useState(user?.profile?.bio || '');
   const [addressCity, setAddressCity] = useState(user?.profile?.address_city || '');
   const [addressProvince, setAddressProvince] = useState(user?.profile?.address_province || '');
+  const [avatarUrl, setAvatarUrl] = useState(user?.profile?.avatar_url || '');
   const [updatingProfile, setUpdatingProfile] = useState(false);
   const [profileMessage, setProfileMessage] = useState({ text: '', type: '' });
+  const [uploadingAvatar, setUploadingAvatar] = useState(false);
 
   // Security Form State
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [updatingPassword, setUpdatingPassword] = useState(false);
   const [passwordMessage, setPasswordMessage] = useState({ text: '', type: '' });
+
+  const avatarInputRef = useRef(null);
+
+  // Quick avatar change from header
+  const handleQuickAvatarUpload = async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const isImage = file.type.startsWith('image/') || /\.(jpe?g|png|webp|gif|bmp|svg|jfif|heic|heif|avif)$/i.test(file.name);
+    if (!isImage) {
+      toastErr('Please select an image file (PNG, JPG, WEBP, JFIF, AVIF).');
+      return;
+    }
+
+    setUploadingAvatar(true);
+    try {
+      const res = await api.uploadFile(file, 'avatars');
+      setAvatarUrl(res.url);
+      await api.updateProfile({ avatarUrl: res.url });
+      await refreshUser();
+      toastOk('Profile picture updated!');
+    } catch (err) {
+      toastErr(err.message || 'Failed to update profile picture.');
+    } finally {
+      setUploadingAvatar(false);
+    }
+  };
 
   const handleVerificationSubmit = async (e) => {
     e.preventDefault();
@@ -52,7 +84,7 @@ export function ProfilePage() {
       return;
     }
     if (!frontImageUrl.trim()) {
-      setVerifMessage({ text: 'Please provide the front photo URL of your ID.', type: 'error' });
+      setVerifMessage({ text: 'Please upload the front photo of your government ID.', type: 'error' });
       return;
     }
 
@@ -65,13 +97,14 @@ export function ProfilePage() {
         backImageUrl: backImageUrl.trim() || undefined,
         selfieImageUrl: selfieImageUrl.trim() || undefined
       });
-      setVerifMessage({
-        text: 'Identity verification documents submitted! The administration team will review your submission.',
-        type: 'success'
-      });
       await refreshUser();
+      await alertSuccess(
+        'Documents Submitted!',
+        'Your identity documents have been uploaded. The admin team will review your submission shortly.'
+      );
+      setVerifMessage({ text: '', type: '' });
     } catch (err) {
-      setVerifMessage({ text: err.message, type: 'error' });
+      toastErr(err.message || 'Submission failed. Please try again.');
     } finally {
       setSubmittingVerif(false);
     }
@@ -88,12 +121,13 @@ export function ProfilePage() {
         phone,
         bio,
         addressCity,
-        addressProvince
+        addressProvince,
+        avatarUrl
       });
-      setProfileMessage({ text: 'Profile updated successfully.', type: 'success' });
       await refreshUser();
+      toastOk('Profile information updated successfully!');
     } catch (err) {
-      setProfileMessage({ text: err.message, type: 'error' });
+      toastErr(err.message || 'Failed to update profile.');
     } finally {
       setUpdatingProfile(false);
     }
@@ -101,16 +135,15 @@ export function ProfilePage() {
 
   const handlePasswordSubmit = async (e) => {
     e.preventDefault();
-    setPasswordMessage({ text: '', type: '' });
     setUpdatingPassword(true);
 
     try {
       await api.changePassword({ currentPassword, newPassword });
-      setPasswordMessage({ text: 'Password updated successfully.', type: 'success' });
+      toastOk('Password changed successfully!');
       setCurrentPassword('');
       setNewPassword('');
     } catch (err) {
-      setPasswordMessage({ text: err.message, type: 'error' });
+      toastErr(err.message || 'Failed to update password.');
     } finally {
       setUpdatingPassword(false);
     }
@@ -119,25 +152,56 @@ export function ProfilePage() {
   if (!user) return null;
 
   const verifStatus = user.verification?.status || 'unverified';
+  const currentAvatar = avatarUrl || user.profile?.avatar_url || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80';
 
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
       
-      {/* Header Banner */}
+      {/* Header Banner with Profile Picture & Change Button */}
       <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-6">
-        <div className="flex items-center gap-5">
-          <img
-            src={user.profile?.avatar_url || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80'}
-            alt={user.fullName}
-            className="w-20 h-20 rounded-2xl object-cover ring-4 ring-teal-500/10 shadow-xs"
-          />
+        <div className="flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left">
+          
+          {/* Avatar with Camera Overlay & Click to Upload */}
+          <div className="relative group shrink-0">
+            <div className="w-24 h-24 rounded-2xl overflow-hidden ring-4 ring-teal-500/10 shadow-xs bg-slate-100 relative">
+              <img
+                src={currentAvatar}
+                alt={user.fullName}
+                className="w-full h-full object-cover"
+              />
+              {uploadingAvatar && (
+                <div className="absolute inset-0 bg-slate-900/70 flex items-center justify-center">
+                  <Loader2 className="w-6 h-6 text-white animate-spin" />
+                </div>
+              )}
+            </div>
+
+            {/* Quick Upload Trigger */}
+            <button
+              type="button"
+              onClick={() => avatarInputRef.current?.click()}
+              disabled={uploadingAvatar}
+              className="absolute -bottom-2 -right-2 p-2 bg-slate-900 hover:bg-teal-600 text-white rounded-xl shadow-md transition-all hover:scale-110"
+              title="Click to change profile picture"
+            >
+              <Camera className="w-4 h-4" />
+            </button>
+            <input
+              ref={avatarInputRef}
+              type="file"
+              accept="image/*,.jfif,.heic,.heif,.avif,.webp"
+              onChange={handleQuickAvatarUpload}
+              className="hidden"
+            />
+          </div>
+
           <div className="space-y-1">
-            <div className="flex flex-wrap items-center gap-2">
+            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
               <h1 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">{user.fullName}</h1>
               <TrustBadge status={verifStatus} />
             </div>
             <p className="text-xs text-slate-500">{user.email}</p>
-            <div className="flex items-center gap-4 text-xs text-slate-600 pt-1">
+            <div className="flex items-center justify-center sm:justify-start gap-4 text-xs text-slate-600 pt-1">
               <span className="flex items-center gap-1 font-semibold text-slate-800">
                 <Star className="w-3.5 h-3.5 text-amber-500 fill-amber-500" />
                 {user.profile?.trust_score || '5.00'} Trust Score
@@ -147,13 +211,22 @@ export function ProfilePage() {
             </div>
           </div>
         </div>
+
+        <button
+          type="button"
+          onClick={() => avatarInputRef.current?.click()}
+          className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl transition-colors flex items-center gap-2"
+        >
+          <Camera className="w-4 h-4 text-slate-600" />
+          <span>Change Photo</span>
+        </button>
       </div>
 
       {/* Tabs */}
-      <div className="flex items-center gap-2 border-b border-slate-200">
+      <div className="flex items-center gap-2 border-b border-slate-200 overflow-x-auto">
         <button
           onClick={() => setActiveTab('verification')}
-          className={`flex items-center gap-2 px-5 py-3 text-xs font-bold border-b-2 transition-all ${
+          className={`flex items-center gap-2 px-5 py-3 text-xs font-bold border-b-2 transition-all shrink-0 ${
             activeTab === 'verification'
               ? 'border-teal-600 text-teal-700 bg-teal-50/50 rounded-t-xl'
               : 'border-transparent text-slate-500 hover:text-slate-800'
@@ -165,7 +238,7 @@ export function ProfilePage() {
 
         <button
           onClick={() => setActiveTab('profile')}
-          className={`flex items-center gap-2 px-5 py-3 text-xs font-bold border-b-2 transition-all ${
+          className={`flex items-center gap-2 px-5 py-3 text-xs font-bold border-b-2 transition-all shrink-0 ${
             activeTab === 'profile'
               ? 'border-teal-600 text-teal-700 bg-teal-50/50 rounded-t-xl'
               : 'border-transparent text-slate-500 hover:text-slate-800'
@@ -177,7 +250,7 @@ export function ProfilePage() {
 
         <button
           onClick={() => setActiveTab('security')}
-          className={`flex items-center gap-2 px-5 py-3 text-xs font-bold border-b-2 transition-all ${
+          className={`flex items-center gap-2 px-5 py-3 text-xs font-bold border-b-2 transition-all shrink-0 ${
             activeTab === 'security'
               ? 'border-teal-600 text-teal-700 bg-teal-50/50 rounded-t-xl'
               : 'border-transparent text-slate-500 hover:text-slate-800'
@@ -188,7 +261,9 @@ export function ProfilePage() {
         </button>
       </div>
 
-      {/* TAB CONTENT: IDENTITY VERIFICATION */}
+      {/* ========================================================= */}
+      {/* TAB CONTENT: IDENTITY VERIFICATION                       */}
+      {/* ========================================================= */}
       {activeTab === 'verification' && (
         <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-xs space-y-6">
           <div>
@@ -225,7 +300,7 @@ export function ProfilePage() {
               <div>
                 <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider">Verification Required</h4>
                 <p className="text-xs text-slate-600 mt-0.5 leading-relaxed">
-                  Please submit a valid Passport, Driver's License, or National ID. Your document images are stored privately in encrypted storage and never exposed to the public.
+                  Please upload a clear photo of your Philippine National ID (PhilSys), Driver's License (LTO), Passport (DFA), or UMID. Your document images are stored securely and never made public.
                 </p>
               </div>
             </div>
@@ -241,7 +316,7 @@ export function ProfilePage() {
 
           {/* Form */}
           {verifStatus !== 'verified' && (
-            <form onSubmit={handleVerificationSubmit} className="space-y-5 pt-2">
+            <form onSubmit={handleVerificationSubmit} className="space-y-6 pt-2">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-bold text-slate-700 mb-1">Philippine Government ID Type</label>
@@ -274,41 +349,34 @@ export function ProfilePage() {
                 </div>
               </div>
 
-              <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">Front ID Photo URL / Upload</label>
-                <input
-                  type="text"
-                  required
-                  placeholder="https://images.unsplash.com/... or /uploads/..."
-                  value={frontImageUrl}
-                  onChange={(e) => setFrontImageUrl(e.target.value)}
-                  className="w-full text-xs bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 focus:outline-none focus:border-teal-500"
+              {/* REUSABLE FILE UPLOAD DROPZONE FOR FRONT ID */}
+              <FileUpload
+                label="Front ID Photo"
+                description="Upload a clear, high-resolution photo showing your full name, photo, and ID number."
+                value={frontImageUrl}
+                onChange={setFrontImageUrl}
+                folder="verifications"
+                required={true}
+              />
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {/* BACK ID UPLOAD */}
+                <FileUpload
+                  label="Back ID Photo (Optional)"
+                  description="Upload back side of ID if details or barcode are on the back."
+                  value={backImageUrl}
+                  onChange={setBackImageUrl}
+                  folder="verifications"
                 />
-                <span className="text-[11px] text-slate-400 mt-1 block">Clear, high-resolution photo showing your name, photo, and ID number.</span>
-              </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">Back ID Photo URL (Optional)</label>
-                  <input
-                    type="text"
-                    placeholder="https://..."
-                    value={backImageUrl}
-                    onChange={(e) => setBackImageUrl(e.target.value)}
-                    className="w-full text-xs bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 focus:outline-none focus:border-teal-500"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">Verification Selfie URL (Optional)</label>
-                  <input
-                    type="text"
-                    placeholder="https://..."
-                    value={selfieImageUrl}
-                    onChange={(e) => setSelfieImageUrl(e.target.value)}
-                    className="w-full text-xs bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 focus:outline-none focus:border-teal-500"
-                  />
-                </div>
+                {/* SELFIE UPLOAD */}
+                <FileUpload
+                  label="Biometric Verification Selfie (Optional)"
+                  description="Upload a photo of yourself holding your government ID for expedited approval."
+                  value={selfieImageUrl}
+                  onChange={setSelfieImageUrl}
+                  folder="verifications"
+                />
               </div>
 
               <button
@@ -317,14 +385,16 @@ export function ProfilePage() {
                 className="py-3 px-6 bg-teal-600 hover:bg-teal-700 disabled:bg-slate-300 text-white font-bold text-xs rounded-xl shadow-xs transition-colors flex items-center gap-2"
               >
                 <FileCheck className="w-4 h-4" />
-                <span>{submittingVerif ? 'Submitting...' : 'Submit ID Verification'}</span>
+                <span>{submittingVerif ? 'Submitting Documents...' : 'Submit ID Verification'}</span>
               </button>
             </form>
           )}
         </div>
       )}
 
-      {/* TAB CONTENT: PROFILE INFO */}
+      {/* ========================================================= */}
+      {/* TAB CONTENT: PROFILE INFO                                */}
+      {/* ========================================================= */}
       {activeTab === 'profile' && (
         <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-xs space-y-6">
           <div>
@@ -340,7 +410,17 @@ export function ProfilePage() {
             </div>
           )}
 
-          <form onSubmit={handleProfileSubmit} className="space-y-4">
+          <form onSubmit={handleProfileSubmit} className="space-y-6">
+            
+            {/* Direct Profile Picture Upload in Form */}
+            <FileUpload
+              label="Profile Picture / Avatar"
+              description="Upload a friendly photo of yourself for your RentLoop public profile."
+              value={avatarUrl}
+              onChange={setAvatarUrl}
+              folder="avatars"
+            />
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-xs font-bold text-slate-700 mb-1">Full Legal Name</label>
@@ -371,6 +451,7 @@ export function ProfilePage() {
                   type="text"
                   value={addressCity}
                   onChange={(e) => setAddressCity(e.target.value)}
+                  placeholder="e.g. Quezon City, Makati, Cebu City"
                   className="w-full text-xs bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 focus:outline-none focus:border-teal-500"
                 />
               </div>
@@ -381,6 +462,7 @@ export function ProfilePage() {
                   type="text"
                   value={addressProvince}
                   onChange={(e) => setAddressProvince(e.target.value)}
+                  placeholder="e.g. Metro Manila, Cebu, Davao del Sur"
                   className="w-full text-xs bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 focus:outline-none focus:border-teal-500"
                 />
               </div>
@@ -402,13 +484,15 @@ export function ProfilePage() {
               disabled={updatingProfile}
               className="py-3 px-6 bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs rounded-xl shadow-xs transition-colors"
             >
-              {updatingProfile ? 'Saving...' : 'Save Changes'}
+              {updatingProfile ? 'Saving Changes...' : 'Save Changes'}
             </button>
           </form>
         </div>
       )}
 
-      {/* TAB CONTENT: SECURITY */}
+      {/* ========================================================= */}
+      {/* TAB CONTENT: SECURITY                                    */}
+      {/* ========================================================= */}
       {activeTab === 'security' && (
         <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-xs space-y-6">
           <div>
@@ -461,4 +545,3 @@ export function ProfilePage() {
     </div>
   );
 }
-

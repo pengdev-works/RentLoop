@@ -19,6 +19,8 @@ import { api } from '../services/api';
 import { useAuth } from '../context/AuthContext';
 import { StatusPill } from '../components/common/StatusPill';
 import { Modal } from '../components/common/Modal';
+import { FileUpload } from '../components/common/FileUpload';
+import { toastOk, toastErr, alertSuccess, alertError, confirm } from '../utils/swal';
 
 export function RentalDetailPage() {
   const { id } = useParams();
@@ -105,7 +107,7 @@ export function RentalDetailPage() {
   // Handlers
   const handlePreInspectionSubmit = async (e) => {
     e.preventDefault();
-    if (!preNotes.trim()) return alert('Please enter condition notes.');
+    if (!preNotes.trim()) return toastErr('Please enter condition notes.');
     setSubmittingPre(true);
     try {
       await api.submitConditionReport({
@@ -117,8 +119,9 @@ export function RentalDetailPage() {
         imageUrls: preImageUrl.trim() ? [preImageUrl.trim()] : undefined
       });
       await loadRentalData();
+      alertSuccess('Inspection Recorded!', 'Pre-rental condition report and photos have been securely logged.');
     } catch (err) {
-      alert(err.message);
+      toastErr(err.message || 'Failed to submit inspection report.');
     } finally {
       setSubmittingPre(false);
     }
@@ -127,9 +130,10 @@ export function RentalDetailPage() {
   const handleVerifyConditionReport = async (reportId) => {
     try {
       await api.verifyConditionReport(reportId);
+      toastOk('Condition report verified.');
       await loadRentalData();
     } catch (err) {
-      alert(err.message);
+      toastErr(err.message || 'Failed to verify condition report.');
     }
   };
 
@@ -140,8 +144,9 @@ export function RentalDetailPage() {
         handoverCode: handoverInputCode || undefined
       });
       await loadRentalData();
+      alertSuccess('Handover Confirmed!', 'The rental is now officially active. Take great care of the item!');
     } catch (err) {
-      alert(err.message);
+      alertError('Handover Failed', err.message || 'Verification code mismatch or error.');
     } finally {
       setConfirmingHandover(false);
     }
@@ -149,7 +154,7 @@ export function RentalDetailPage() {
 
   const handlePostInspectionSubmit = async (e) => {
     e.preventDefault();
-    if (!postNotes.trim()) return alert('Please enter return inspection notes.');
+    if (!postNotes.trim()) return toastErr('Please enter return inspection notes.');
     setSubmittingPost(true);
     try {
       await api.submitConditionReport({
@@ -161,19 +166,28 @@ export function RentalDetailPage() {
         imageUrls: postImageUrl.trim() ? [postImageUrl.trim()] : undefined
       });
       await loadRentalData();
+      alertSuccess('Return Inspection Logged!', 'Post-rental condition notes and photos have been documented.');
     } catch (err) {
-      alert(err.message);
+      toastErr(err.message || 'Failed to submit return inspection.');
     } finally {
       setSubmittingPost(false);
     }
   };
 
   const handleReturnConfirm = async () => {
+    const isConfirmed = await confirm(
+      'Confirm Item Return?',
+      'Verify that the item has been returned safely in agreed condition.',
+      'Yes, Confirm Return'
+    );
+    if (!isConfirmed) return;
+
     try {
       await api.confirmReturn(rental.id);
       await loadRentalData();
+      alertSuccess('Rental Completed!', 'Item return confirmed! Security deposit settlement initiated.');
     } catch (err) {
-      alert(err.message);
+      toastErr(err.message || 'Failed to confirm return.');
     }
   };
 
@@ -188,9 +202,10 @@ export function RentalDetailPage() {
         comment: reviewComment.trim()
       });
       setReviewSuccess(true);
+      toastOk('Rating & Review submitted!');
       await loadRentalData();
     } catch (err) {
-      alert(err.message);
+      toastErr(err.message || 'Failed to submit review.');
     } finally {
       setSubmittingReview(false);
     }
@@ -209,9 +224,9 @@ export function RentalDetailPage() {
       });
       setIsReportModalOpen(false);
       setReportDesc('');
-      alert('Your report has been submitted to trust & safety administrators for investigation.');
+      alertSuccess('Report Lodged', 'Your dispute/concern has been sent to our Trust & Safety admin team for immediate investigation.');
     } catch (err) {
-      alert(err.message);
+      toastErr(err.message || 'Failed to submit report.');
     } finally {
       setSubmittingReport(false);
     }
@@ -430,16 +445,25 @@ export function RentalDetailPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">Inspection Photo URL</label>
+                <label className="block text-xs font-bold text-slate-700 mb-1">Pre-existing Scratches / Cosmetic Flaws (Optional)</label>
                 <input
                   type="text"
-                  placeholder="https://images.unsplash.com/... or upload"
-                  value={preImageUrl}
-                  onChange={(e) => setPreImageUrl(e.target.value)}
+                  placeholder="e.g. Minor rub mark on battery lid plastic."
+                  value={preDamages}
+                  onChange={(e) => setPreDamages(e.target.value)}
                   className="w-full text-xs bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 focus:outline-none focus:border-teal-500"
                 />
               </div>
             </div>
+
+            {/* Direct Inspection File Upload */}
+            <FileUpload
+              label="Pre-Rental Inspection Photograph"
+              description="Upload a photo documenting current condition, lens glass, accessories, or serial number."
+              value={preImageUrl}
+              onChange={setPreImageUrl}
+              folder="conditions"
+            />
 
             <div>
               <label className="block text-xs font-bold text-slate-700 mb-1">Operational & Condition Notes</label>
@@ -450,17 +474,6 @@ export function RentalDetailPage() {
                 value={preNotes}
                 onChange={(e) => setPreNotes(e.target.value)}
                 className="w-full text-xs bg-slate-50 border border-slate-200 rounded-xl p-3 focus:outline-none focus:border-teal-500"
-              />
-            </div>
-
-            <div>
-              <label className="block text-xs font-bold text-slate-700 mb-1">Pre-existing Scratches / Cosmetic Flaws (Optional)</label>
-              <input
-                type="text"
-                placeholder="e.g. Minor rub mark on battery lid plastic."
-                value={preDamages}
-                onChange={(e) => setPreDamages(e.target.value)}
-                className="w-full text-xs bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 focus:outline-none focus:border-teal-500"
               />
             </div>
 
@@ -615,16 +628,25 @@ export function RentalDetailPage() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">Return Photo URL</label>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">New Damages or Missing Items (If any)</label>
                   <input
                     type="text"
-                    placeholder="https://..."
-                    value={postImageUrl}
-                    onChange={(e) => setPostImageUrl(e.target.value)}
+                    placeholder="None / or describe any newly incurred damage..."
+                    value={postDamages}
+                    onChange={(e) => setPostDamages(e.target.value)}
                     className="w-full text-xs bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 focus:outline-none focus:border-teal-500"
                   />
                 </div>
               </div>
+
+              {/* Direct Return File Upload */}
+              <FileUpload
+                label="Return Inspection Photograph"
+                description="Upload a photo verifying item condition upon return."
+                value={postImageUrl}
+                onChange={setPostImageUrl}
+                folder="conditions"
+              />
 
               <div>
                 <label className="block text-xs font-bold text-slate-700 mb-1">Return Inspection Findings</label>
@@ -635,17 +657,6 @@ export function RentalDetailPage() {
                   value={postNotes}
                   onChange={(e) => setPostNotes(e.target.value)}
                   className="w-full text-xs bg-slate-50 border border-slate-200 rounded-xl p-3 focus:outline-none focus:border-teal-500"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">New Damages or Missing Items (If any)</label>
-                <input
-                  type="text"
-                  placeholder="None / or describe any newly incurred damage..."
-                  value={postDamages}
-                  onChange={(e) => setPostDamages(e.target.value)}
-                  className="w-full text-xs bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 focus:outline-none focus:border-teal-500"
                 />
               </div>
 

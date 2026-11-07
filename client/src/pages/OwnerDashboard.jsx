@@ -19,6 +19,8 @@ import {
 import { api } from '../services/api';
 import { StatusPill } from '../components/common/StatusPill';
 import { Modal } from '../components/common/Modal';
+import { FileUpload } from '../components/common/FileUpload';
+import { toastOk, toastErr, alertSuccess, confirm, confirmDanger } from '../utils/swal';
 
 export function OwnerDashboard() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -72,11 +74,19 @@ export function OwnerDashboard() {
   }, []);
 
   const handleApprove = async (requestId) => {
+    const isConfirmed = await confirm(
+      'Approve Request?',
+      'This will schedule the rental and generate a secure handover verification code.',
+      'Approve Rental'
+    );
+    if (!isConfirmed) return;
+
     try {
       await api.approveRequest(requestId);
+      toastOk('Rental request approved!');
       await loadData();
     } catch (err) {
-      alert(err.message);
+      toastErr(err.message || 'Failed to approve request.');
     }
   };
 
@@ -86,9 +96,10 @@ export function OwnerDashboard() {
       await api.rejectRequest(rejectingRequestId, rejectReason);
       setRejectingRequestId(null);
       setRejectReason('');
+      toastOk('Rental request rejected.');
       await loadData();
     } catch (err) {
-      alert(err.message);
+      toastErr(err.message || 'Failed to reject request.');
     }
   };
 
@@ -98,6 +109,7 @@ export function OwnerDashboard() {
 
     if (!newItem.title || !newItem.description || !newItem.categoryId || !newItem.rentalPrice || !newItem.locationCity) {
       setItemError('Please fill in all required listing fields.');
+      toastErr('Please fill in all required listing fields.');
       return;
     }
 
@@ -123,8 +135,10 @@ export function OwnerDashboard() {
         imageUrls: ['']
       });
       await loadData();
+      alertSuccess('Listing Created!', 'Your item is now live and available for booking on RentLoop.');
     } catch (err) {
       setItemError(err.message);
+      toastErr(err.message || 'Failed to create listing.');
     } finally {
       setSubmittingItem(false);
     }
@@ -134,19 +148,26 @@ export function OwnerDashboard() {
     const nextStatus = item.status === 'active' ? 'inactive' : 'active';
     try {
       await api.updateItem(item.id, { status: nextStatus, isAvailable: nextStatus === 'active' });
+      toastOk(`Listing status updated to ${nextStatus}.`);
       await loadData();
     } catch (err) {
-      alert(err.message);
+      toastErr(err.message || 'Failed to update listing status.');
     }
   };
 
   const handleArchiveItem = async (itemId) => {
-    if (!window.confirm('Are you sure you want to archive this item listing?')) return;
+    const isConfirmed = await confirmDanger(
+      'Archive this item?',
+      'This item listing will be archived and removed from the active search catalog.',
+      'Yes, Archive'
+    );
+    if (!isConfirmed) return;
     try {
       await api.deleteItem(itemId);
+      toastOk('Listing archived.');
       await loadData();
     } catch (err) {
-      alert(err.message);
+      toastErr(err.message || 'Failed to archive item.');
     }
   };
 
@@ -536,16 +557,13 @@ export function OwnerDashboard() {
             />
           </div>
 
-          <div>
-            <label className="block text-xs font-bold text-slate-700 mb-1">Photo Image URL</label>
-            <input
-              type="text"
-              placeholder="https://images.unsplash.com/photo-..."
-              value={newItem.imageUrls[0]}
-              onChange={(e) => setNewItem({ ...newItem, imageUrls: [e.target.value] })}
-              className="w-full text-xs bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 focus:outline-none focus:border-teal-500"
-            />
-          </div>
+          <FileUpload
+            label="Item Photo"
+            description="Upload a clear photo of the item you're listing for rent."
+            value={newItem.imageUrls[0]}
+            onChange={(url) => setNewItem({ ...newItem, imageUrls: [url] })}
+            folder="items"
+          />
 
           <div>
             <label className="block text-xs font-bold text-slate-700 mb-1">Rental Guidelines & Restrictions (Optional)</label>

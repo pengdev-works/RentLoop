@@ -227,7 +227,10 @@ export const db = {
 
   async update(table, conditions, updateData) {
     const now = new Date().toISOString();
-    const toUpdate = { ...updateData, updated_at: now };
+    const tablesWithUpdatedAt = ['users', 'user_profiles', 'identity_verifications', 'items', 'rental_requests', 'rentals', 'reports'];
+    const toUpdate = tablesWithUpdatedAt.includes(table)
+      ? { ...updateData, updated_at: now }
+      : { ...updateData };
 
     if (usePostgres && pgPool) {
       const updateKeys = Object.keys(toUpdate);

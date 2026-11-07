@@ -8,6 +8,11 @@ export function errorHandler(err, req, res, next) {
     return res.status(400).json({ error: `Upload error: ${err.message}` });
   }
 
+  // Handle upload format errors with 400 status
+  if (err.message && (err.message.includes('permitted') || err.message.includes('file') || err.message.includes('upload'))) {
+    return res.status(400).json({ error: err.message });
+  }
+
   const statusCode = err.statusCode || 500;
   const message = err.message || 'Internal server error occurred.';
 
@@ -16,4 +21,3 @@ export function errorHandler(err, req, res, next) {
     ...(process.env.NODE_ENV === 'development' ? { stack: err.stack } : {})
   });
 }
-

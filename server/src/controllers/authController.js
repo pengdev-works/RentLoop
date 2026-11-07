@@ -201,6 +201,8 @@ export async function updateProfile(req, res, next) {
 
     if (req.file) {
       profileUpdates.avatar_url = `/uploads/avatars/${req.file.filename}`;
+    } else if (req.body.avatarUrl !== undefined) {
+      profileUpdates.avatar_url = req.body.avatarUrl;
     }
 
     // Filter out undefined

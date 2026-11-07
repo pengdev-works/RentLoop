@@ -1,4 +1,16 @@
-const API_BASE_URL = '/api';
+const BACKEND_URL = import.meta.env.VITE_API_URL ? import.meta.env.VITE_API_URL.replace(/\/$/, '') : '';
+const API_BASE_URL = BACKEND_URL ? `${BACKEND_URL}/api` : '/api';
+
+export function getFullImageUrl(url) {
+  if (!url) return '';
+  if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('data:')) {
+    return url;
+  }
+  if (url.startsWith('/uploads') && BACKEND_URL) {
+    return `${BACKEND_URL}${url}`;
+  }
+  return url;
+}
 
 export async function apiRequest(endpoint, options = {}) {
   const token = localStorage.getItem('rentloop_token');
@@ -30,6 +42,20 @@ export async function apiRequest(endpoint, options = {}) {
 }
 
 export const api = {
+  // Generic File Upload
+  uploadFile: async (file, folder = 'general') => {
+    const formData = new FormData();
+    formData.append('file', file);
+    const res = await apiRequest(`/upload?folder=${encodeURIComponent(folder)}`, {
+      method: 'POST',
+      body: formData
+    });
+    if (res && res.url) {
+      res.url = getFullImageUrl(res.url);
+    }
+    return res;
+  },
+
   // Auth
   login: (credentials) => apiRequest('/auth/login', { method: 'POST', body: credentials }),
   register: (userData) => apiRequest('/auth/register', { method: 'POST', body: userData }),

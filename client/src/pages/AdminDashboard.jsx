@@ -26,6 +26,7 @@ import { useAuth } from '../context/AuthContext';
 import { api } from '../services/api';
 import { StatusPill } from '../components/common/StatusPill';
 import { Modal } from '../components/common/Modal';
+import { toastOk, toastErr, confirmDanger } from '../utils/swal';
 
 export function AdminDashboard() {
   const { user, logout } = useAuth();
@@ -83,12 +84,18 @@ export function AdminDashboard() {
 
   const handleToggleUserStatus = async (targetUser) => {
     const nextStatus = targetUser.status === 'active' ? 'suspended' : 'active';
-    if (!window.confirm(`Are you sure you want to change this user status to ${nextStatus}?`)) return;
+    const isConfirmed = await confirmDanger(
+      `Change user status to ${nextStatus}?`,
+      `Account: ${targetUser.fullName || targetUser.email}`,
+      `Yes, Set to ${nextStatus}`
+    );
+    if (!isConfirmed) return;
     try {
       await api.updateUserStatus(targetUser.id, { status: nextStatus });
+      toastOk(`User status set to ${nextStatus}.`);
       await loadAllAdminData();
     } catch (err) {
-      alert(err.message);
+      toastErr(err.message || 'Failed to update user status.');
     }
   };
 
@@ -102,9 +109,10 @@ export function AdminDashboard() {
       });
       setSelectedVerif(null);
       setRejectionReason('');
+      toastOk(`Verification document ${status}.`);
       await loadAllAdminData();
     } catch (err) {
-      alert(err.message);
+      toastErr(err.message || 'Failed to review verification.');
     } finally {
       setProcessingVerif(false);
     }
@@ -120,9 +128,10 @@ export function AdminDashboard() {
       });
       setSelectedReport(null);
       setAdminNotes('');
+      toastOk(`Report marked as ${status}.`);
       await loadAllAdminData();
     } catch (err) {
-      alert(err.message);
+      toastErr(err.message || 'Failed to resolve report.');
     } finally {
       setProcessingReport(false);
     }
@@ -130,6 +139,7 @@ export function AdminDashboard() {
 
   const handleLogout = () => {
     logout();
+    toastOk('Signed out of Admin Console.');
     navigate('/login');
   };
 
@@ -269,35 +279,6 @@ export function AdminDashboard() {
               </nav>
             </div>
 
-            {/* Live Database Environment Chip */}
-            <div className="px-1">
-              <div className="p-3.5 rounded-2xl bg-slate-900/90 border border-slate-800 text-[11px] space-y-2">
-                <div className="flex items-center justify-between font-bold text-slate-200">
-                  <span className="flex items-center gap-1.5">
-                    <Database className="w-3.5 h-3.5 text-teal-400" />
-                    Neon PostgreSQL
-                  </span>
-                  <span className="flex items-center gap-1 text-[10px] text-emerald-400 font-bold">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                    Live
-                  </span>
-                </div>
-                <div className="text-[10px] text-slate-400 space-y-0.5 border-t border-slate-800/70 pt-2 font-mono">
-                  <div className="flex justify-between">
-                    <span>SSL Mode:</span>
-                    <span className="text-teal-300">Require</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Region:</span>
-                    <span className="text-slate-300">ap-southeast-1</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Role:</span>
-                    <span className="text-indigo-300">Super Admin</span>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
 
