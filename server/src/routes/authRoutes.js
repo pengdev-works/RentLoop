@@ -12,3 +12,4 @@ router.put('/profile', authenticateToken, upload.single('avatar'), updateProfile
 router.put('/change-password', authenticateToken, changePassword);
 
 export default router;
+

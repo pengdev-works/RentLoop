@@ -59,10 +59,9 @@ export function Footer() {
               Capstone Project: Full-stack implementation featuring PostgreSQL, Node.js REST API, Role-Based Access Control, and condition evidence tracking.
             </p>
             <div className="bg-slate-800/80 p-3 rounded-xl border border-slate-700 text-[11px] text-slate-400">
-              <span className="font-semibold text-teal-300">Demo Role Logins:</span>
+              <span className="font-semibold text-teal-300">Default Admin Account:</span>
               <p className="mt-1">Admin: admin@rentloop.com</p>
-              <p>Owner: john.owner@rentloop.com</p>
-              <p>Renter: sarah.renter@rentloop.com</p>
+              <p>Password: Password123!</p>
             </div>
           </div>
         </div>
@@ -79,3 +78,4 @@ export function Footer() {
     </footer>
   );
 }
+

@@ -31,16 +31,15 @@
 
 ---
 
-## 🔑 Demo & Evaluation Accounts
+## 🔑 System Administrator Credentials
 
-The platform is seeded with realistic demonstration accounts. On the **Login Page**, you can click any of the **1-Click Evaluation Login** buttons:
+The platform is initialized with a single pre-configured administrative account:
 
 | Role | Email Address | Password | Permissions & Highlights |
 |---|---|---|---|
-| **System Administrator** | `admin@rentloop.com` | `Password123!` | Full control room: user moderation, identity reviews, dispute resolution, audit trail |
-| **Item Owner** | `john.owner@rentloop.com` | `Password123!` | Verified member: camera gear & power tool listings, review incoming rental inquiries, upload pre/post condition reports |
-| **Renter** | `sarah.renter@rentloop.com` | `Password123!` | Verified member: browse catalog, send booking requests, sign off on condition reports, confirm handovers, post reviews |
-| **Pending User** | `david.user@rentloop.com` | `Password123!` | Unverified account with identity submission queued for admin review in the Admin Control Room |
+| **System Administrator** | `admin@rentloop.com` | `Password123!` | Full control room: user moderation, identity document verification, dispute resolution, audit trail |
+
+> **Note:** To test the platform as an **Item Owner** or **Renter**, register new accounts via the public **Get Started / Register** page. Owners can submit identity verification in their profile and list items, while Renters can search, request rentals, acknowledge pre-rental inspections, and post reviews.
 
 ---
 
@@ -147,3 +146,4 @@ RentLoop/
 - **Private Identity Verification:** Government ID numbers and identity document images are strictly excluded from public user endpoints and accessible only by administrators.
 - **SQL Parameterization:** Queries use parameterized arguments to eliminate SQL injection vulnerabilities.
 - **Audit Logging:** Administrative actions, dispute resolutions, and status modifications write tamper-evident entries to the `audit_logs` table.
+

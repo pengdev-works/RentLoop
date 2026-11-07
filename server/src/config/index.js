@@ -17,3 +17,4 @@ export const config = {
   uploadDir: path.resolve(__dirname, '../../../uploads'),
   maxFileSize: 10 * 1024 * 1024 // 10MB
 };
+

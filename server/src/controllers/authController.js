@@ -266,3 +266,4 @@ export async function changePassword(req, res, next) {
     next(err);
   }
 }
+

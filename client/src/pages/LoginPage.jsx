@@ -114,29 +114,15 @@ export function LoginPage() {
         {/* 1-Click Evaluation Credentials */}
         <div className="pt-4 border-t border-slate-100 space-y-3">
           <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block text-center">
-            Demo & Evaluation Fast-Login
+            System Admin Fast-Login
           </span>
-          <div className="grid grid-cols-3 gap-2">
-            <button
-              onClick={() => handleQuickLogin('john.owner@rentloop.com')}
-              className="p-2 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-center transition-colors"
-            >
-              <UserCheck className="w-4 h-4 text-teal-600 mx-auto mb-1" />
-              <span className="text-[10px] font-bold text-slate-700 block">Item Owner</span>
-            </button>
-            <button
-              onClick={() => handleQuickLogin('sarah.renter@rentloop.com')}
-              className="p-2 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-center transition-colors"
-            >
-              <ShieldCheck className="w-4 h-4 text-emerald-600 mx-auto mb-1" />
-              <span className="text-[10px] font-bold text-slate-700 block">Renter</span>
-            </button>
+          <div>
             <button
               onClick={() => handleQuickLogin('admin@rentloop.com')}
-              className="p-2 rounded-xl bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 text-center transition-colors"
+              className="w-full p-2.5 rounded-xl bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 text-center transition-colors flex items-center justify-center gap-2"
             >
-              <Shield className="w-4 h-4 text-indigo-600 mx-auto mb-1" />
-              <span className="text-[10px] font-bold text-indigo-900 block">Sys Admin</span>
+              <Shield className="w-4 h-4 text-indigo-600" />
+              <span className="text-xs font-bold text-indigo-900">Sign in as System Admin (admin@rentloop.com)</span>
             </button>
           </div>
         </div>
@@ -152,3 +138,4 @@ export function LoginPage() {
     </div>
   );
 }
+

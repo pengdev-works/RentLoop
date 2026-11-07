@@ -92,3 +92,4 @@ export const api = {
   resolveAdminReport: (id, data) => apiRequest(`/admin/reports/${id}/resolve`, { method: 'PUT', body: data }),
   getAdminAuditLogs: () => apiRequest('/admin/audit-logs')
 };
+

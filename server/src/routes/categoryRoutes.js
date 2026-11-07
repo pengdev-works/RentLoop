@@ -10,3 +10,4 @@ router.post('/', authenticateToken, requireRole('admin'), createCategory);
 router.put('/:id', authenticateToken, requireRole('admin'), updateCategory);
 
 export default router;
+

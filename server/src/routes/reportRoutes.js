@@ -7,3 +7,4 @@ const router = express.Router();
 router.post('/', authenticateToken, createReport);
 
 export default router;
+

@@ -57,23 +57,35 @@ async function runTests() {
     adminToken = adminLogin.data.token;
     console.log('  ✅ Admin authentication successful with JWT token');
 
-    // Login Owner
-    const ownerLogin = await request('/auth/login', {
+    // Register Owner dynamically
+    let ownerUserId = '';
+    const ownerReg = await request('/auth/register', {
       method: 'POST',
-      body: { email: 'john.owner@rentloop.com', password: 'Password123!' }
+      body: {
+        email: `owner.${Date.now()}@rentloop.com`,
+        password: 'Password123!',
+        fullName: 'Test Item Owner',
+        addressCity: 'Seattle, WA'
+      }
     });
-    assert.strictEqual(ownerLogin.status, 200, 'Owner login should succeed');
-    ownerToken = ownerLogin.data.token;
-    console.log('  ✅ Item Owner authentication successful');
+    assert.strictEqual(ownerReg.status, 201, 'Owner registration should succeed');
+    ownerToken = ownerReg.data.token;
+    ownerUserId = ownerReg.data.user.id;
+    console.log('  ✅ Item Owner registered and authenticated successfully');
 
-    // Login Renter
-    const renterLogin = await request('/auth/login', {
+    // Register Renter dynamically
+    const renterReg = await request('/auth/register', {
       method: 'POST',
-      body: { email: 'sarah.renter@rentloop.com', password: 'Password123!' }
+      body: {
+        email: `renter.${Date.now()}@rentloop.com`,
+        password: 'Password123!',
+        fullName: 'Test Item Renter',
+        addressCity: 'Bellevue, WA'
+      }
     });
-    assert.strictEqual(renterLogin.status, 200, 'Renter login should succeed');
-    renterToken = renterLogin.data.token;
-    console.log('  ✅ Renter authentication successful');
+    assert.strictEqual(renterReg.status, 201, 'Renter registration should succeed');
+    renterToken = renterReg.data.token;
+    console.log('  ✅ Renter registered and authenticated successfully');
 
     // Self-registration (privilege escalation prevention)
     const testReg = await request('/auth/register', {
@@ -247,7 +259,7 @@ async function runTests() {
       method: 'POST',
       headers: { Authorization: `Bearer ${renterToken}` },
       body: {
-        reportedUserId: '22222222-2222-2222-2222-222222222222',
+        reportedUserId: ownerUserId,
         rentalId: testRentalId,
         reportType: 'damaged_item',
         description: 'Test dispute investigation filing.'
@@ -315,3 +327,4 @@ async function runTests() {
 }
 
 runTests();
+

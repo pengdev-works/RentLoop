@@ -27,3 +27,4 @@ router.put('/reports/:id/resolve', resolveReportAdmin);
 router.get('/audit-logs', getAuditLogs);
 
 export default router;
+

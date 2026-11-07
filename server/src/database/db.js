@@ -338,3 +338,4 @@ function executeLocalQuery(text, params) {
   }
   return { rows: [], rowCount: 0 };
 }
+

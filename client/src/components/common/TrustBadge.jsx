@@ -36,3 +36,4 @@ export function TrustBadge({ isVerified, status = 'unverified', size = 'sm' }) {
     </span>
   );
 }
+

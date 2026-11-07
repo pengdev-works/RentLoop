@@ -89,3 +89,4 @@ export async function updateCategory(req, res, next) {
     next(err);
   }
 }
+

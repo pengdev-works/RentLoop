@@ -19,3 +19,4 @@ router.post(
 router.get('/:id/public-profile', getPublicUserProfile);
 
 export default router;
+

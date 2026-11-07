@@ -232,3 +232,4 @@ CREATE INDEX IF NOT EXISTS idx_rental_requests_owner ON rental_requests(owner_id
 CREATE INDEX IF NOT EXISTS idx_rental_requests_dates ON rental_requests(start_date, end_date);
 CREATE INDEX IF NOT EXISTS idx_rentals_status ON rentals(status);
 CREATE INDEX IF NOT EXISTS idx_notifications_user_unread ON notifications(user_id, is_read);
+

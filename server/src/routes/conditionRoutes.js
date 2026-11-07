@@ -9,3 +9,4 @@ router.post('/reports', authenticateToken, upload.array('photos', 6), submitCond
 router.put('/reports/:id/verify', authenticateToken, verifyConditionReport);
 
 export default router;
+

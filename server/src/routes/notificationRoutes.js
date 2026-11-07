@@ -15,3 +15,4 @@ router.put('/:id/read', authenticateToken, markAsRead);
 router.delete('/:id', authenticateToken, deleteNotification);
 
 export default router;
+
