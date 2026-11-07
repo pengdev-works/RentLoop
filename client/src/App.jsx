@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { NotificationProvider } from './context/NotificationContext';
 import { Navbar } from './components/layout/Navbar';
@@ -32,6 +32,16 @@ function AdminRoute({ children }) {
   return children;
 }
 
+function MarketplaceLayout({ children }) {
+  return (
+    <div className="min-h-screen flex flex-col bg-[#F8FAFC]">
+      <Navbar />
+      <main className="flex-1">{children}</main>
+      <Footer />
+    </div>
+  );
+}
+
 export function App() {
   return (
     <AuthProvider>
@@ -42,67 +52,68 @@ export function App() {
             v7_relativeSplatPath: true,
           }}
         >
-          <div className="min-h-screen flex flex-col bg-[#F8FAFC]">
-            <Navbar />
-            <main className="flex-1">
-              <Routes>
-                {/* Public Routes */}
-                <Route path="/" element={<HomePage />} />
-                <Route path="/items" element={<ItemsPage />} />
-                <Route path="/items/:id" element={<ItemDetailPage />} />
-                <Route path="/login" element={<LoginPage />} />
-                <Route path="/register" element={<RegisterPage />} />
+          <Routes>
+            {/* Dedicated Full-Screen Admin Portal (True Full-Height Sidebar Layout) */}
+            <Route
+              path="/admin/dashboard"
+              element={
+                <AdminRoute>
+                  <AdminDashboard />
+                </AdminRoute>
+              }
+            />
 
-                {/* Authenticated User Routes */}
-                <Route
-                  path="/profile"
-                  element={
-                    <ProtectedRoute>
-                      <ProfilePage />
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="/renter/dashboard"
-                  element={
-                    <ProtectedRoute>
-                      <RenterDashboard />
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="/owner/dashboard"
-                  element={
-                    <ProtectedRoute>
-                      <OwnerDashboard />
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="/rentals/:id"
-                  element={
-                    <ProtectedRoute>
-                      <RentalDetailPage />
-                    </ProtectedRoute>
-                  }
-                />
+            {/* Standard Marketplace Pages with Consumer Navbar and Footer */}
+            <Route
+              path="*"
+              element={
+                <MarketplaceLayout>
+                  <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/items" element={<ItemsPage />} />
+                    <Route path="/items/:id" element={<ItemDetailPage />} />
+                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="/register" element={<RegisterPage />} />
 
-                {/* System Admin Routes */}
-                <Route
-                  path="/admin/dashboard"
-                  element={
-                    <AdminRoute>
-                      <AdminDashboard />
-                    </AdminRoute>
-                  }
-                />
+                    <Route
+                      path="/profile"
+                      element={
+                        <ProtectedRoute>
+                          <ProfilePage />
+                        </ProtectedRoute>
+                      }
+                    />
+                    <Route
+                      path="/renter/dashboard"
+                      element={
+                        <ProtectedRoute>
+                          <RenterDashboard />
+                        </ProtectedRoute>
+                      }
+                    />
+                    <Route
+                      path="/owner/dashboard"
+                      element={
+                        <ProtectedRoute>
+                          <OwnerDashboard />
+                        </ProtectedRoute>
+                      }
+                    />
+                    <Route
+                      path="/rentals/:id"
+                      element={
+                        <ProtectedRoute>
+                          <RentalDetailPage />
+                        </ProtectedRoute>
+                      }
+                    />
 
-                {/* Fallback */}
-                <Route path="*" element={<Navigate to="/" replace />} />
-              </Routes>
-            </main>
-            <Footer />
-          </div>
+                    <Route path="*" element={<Navigate to="/" replace />} />
+                  </Routes>
+                </MarketplaceLayout>
+              }
+            />
+          </Routes>
         </BrowserRouter>
       </NotificationProvider>
     </AuthProvider>
@@ -110,4 +121,3 @@ export function App() {
 }
 
 export default App;
-
