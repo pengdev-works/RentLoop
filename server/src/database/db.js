@@ -68,9 +68,14 @@ function saveLocalStore() {
 export async function initDb() {
   if (config.databaseUrl && config.databaseUrl.trim() !== '') {
     try {
+      const requiresSsl = config.databaseUrl.includes('neon.tech') || 
+                          config.databaseUrl.includes('supabase') || 
+                          config.databaseUrl.includes('sslmode=require') || 
+                          config.nodeEnv === 'production';
+
       pgPool = new Pool({
         connectionString: config.databaseUrl,
-        ssl: config.nodeEnv === 'production' ? { rejectUnauthorized: false } : false
+        ssl: requiresSsl ? { rejectUnauthorized: false } : false
       });
       const client = await pgPool.connect();
       client.release();
